@@ -9,7 +9,7 @@ Version: @PACKAGE_VERSION@
 Release: %rel
 
 Summary: Log for C++, Shibboleth Edition
-Copyright: LGPL
+License: LGPL
 Group: Development/Libraries
 Url: http://shibboleth.internet2.edu/
 
