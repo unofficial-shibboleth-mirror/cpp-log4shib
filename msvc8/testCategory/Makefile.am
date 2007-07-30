@@ -1,1 +1,1 @@
-EXTRA_DIST = testCategory.dsp
+EXTRA_DIST = testCategory.vcproj

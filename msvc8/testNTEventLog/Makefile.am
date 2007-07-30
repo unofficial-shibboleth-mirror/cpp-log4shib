@@ -1,3 +1,2 @@
-EXTRA_DIST = testNTEventLog.dsp
-
+EXTRA_DIST = testNTEventLog.vcproj
 

@@ -1,2 +1,2 @@
-EXTRA_DIST = testDLL.dsp
+EXTRA_DIST = testDLL.vcproj
 

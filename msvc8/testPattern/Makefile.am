@@ -1,3 +1,2 @@
-EXTRA_DIST = testPattern.dsp
-
+EXTRA_DIST = testPattern.vcproj
 

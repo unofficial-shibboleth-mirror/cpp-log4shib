@@ -153,6 +153,15 @@ msvc6/testMain/Makefile
 msvc6/testNDC/Makefile
 msvc6/testNTEventLog/Makefile
 msvc6/testPattern/Makefile
+msvc8/Makefile
+msvc8/log4shib/Makefile
+msvc8/log4shibDLL/Makefile
+msvc8/testCategory/Makefile
+msvc8/testDLL/Makefile
+msvc8/testMain/Makefile
+msvc8/testNDC/Makefile
+msvc8/testNTEventLog/Makefile
+msvc8/testPattern/Makefile
 bcb5/Makefile
 bcb5/log4shib/Makefile
 bcb5/testCategory/Makefile

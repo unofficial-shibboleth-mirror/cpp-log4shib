@@ -1,2 +1,2 @@
-EXTRA_DIST = testMain.dsp
+EXTRA_DIST = testMain.vcproj
 

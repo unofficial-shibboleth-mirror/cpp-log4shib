@@ -1,1 +1,1 @@
-EXTRA_DIST = testNDC.dsp
+EXTRA_DIST = testNDC.vcproj

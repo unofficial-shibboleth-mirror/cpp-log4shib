@@ -1,1 +1,1 @@
-EXTRA_DIST = log4shib.dsp
+EXTRA_DIST = log4shib.vcproj
