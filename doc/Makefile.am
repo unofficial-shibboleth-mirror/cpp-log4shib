@@ -1,6 +1,6 @@
 SUBDIRS = html
 
-man3dir = $(mandir)/man3
+man3dir = $(DESTDIR)$(mandir)/man3
 docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
 
 EXTRA_DIST = \
@@ -25,7 +25,7 @@ install-data-local:
 	$(mkinstalldirs) $(man3dir)
 	@for i in ./man/man3/log4shib.3 ./man/man3/log4shib_*.3; do \
 		inst=`basename $$i | sed 's/_/::/g'`; \
-		echo "$(INSTALL_DATA) $$i$(man3dir)/$$inst"; \
+		echo "$(INSTALL_DATA) $$i $(man3dir)/$$inst"; \
 		$(INSTALL_DATA) $$i $(man3dir)/$$inst; \
 	done
 	$(mkinstalldirs) $(docdir)
