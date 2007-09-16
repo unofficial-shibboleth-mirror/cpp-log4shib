@@ -51,7 +51,7 @@ the popular doxygen documentation generation tool.
 %install
 %{__rm} -rf $RPM_BUILD_ROOT
 
-%{__make} prefix=$RPM_BUILD_ROOT%{prefix}docdir=$RPM_BUILD_ROOT/%{manualdir} install
+%{__make} prefix=$RPM_BUILD_ROOT%{prefix} docdir=$RPM_BUILD_ROOT/%{manualdir} install
 %clean
 %{__rm} -rf $RPM_BUILD_ROOT
 
@@ -77,10 +77,10 @@ fi
 %files devel
 %defattr(-,root,root,755)
 %{_includedir}
-%prefix/man/*
+%{_mandir}/*
 %attr(755,root,root) %{_bindir}/log4shib-config
-%attr(755,root,root) %{_libdir}/lib*.so
-%attr(644,root,root) %{_libdir}/*.*a
+%attr(755,root,root) %{_libdir}/*.so
+%attr(644,root,root) %{_libdir}/*a
 %attr(644,root,root) %{_libdir}/pkgconfig/log4shib.pc
 %attr(644,root,root) %{_datadir}/aclocal/*.m4
 
