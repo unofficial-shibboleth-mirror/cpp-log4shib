@@ -36,6 +36,10 @@ namespace log4shib {
         }
     }
 
+    CategoryStream& CategoryStream::operator<< (cspf pf) {
+ 		return (*pf)(*this);
+    }
+
     CategoryStream& eol (CategoryStream& os) {
         if  (os._buffer) {
     		os.flush();

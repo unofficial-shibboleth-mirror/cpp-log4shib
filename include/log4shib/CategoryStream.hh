@@ -88,6 +88,9 @@ namespace log4shib {
         Priority::Value _priority;
         std::ostringstream* _buffer;
 
+     public:
+        typedef CategoryStream& (*cspf) (CategoryStream&);
+        CategoryStream& operator << (cspf);
         LOG4SHIB_EXPORT friend CategoryStream& eol (CategoryStream& os);
     };
 
