@@ -28,16 +28,18 @@ namespace log4shib {
         flush();
     }
 
-    CategoryStream& CategoryStream::operator<<(CategoryStream::Separator separator) {
-        flush();
-        return *this;
-    }
-
     void CategoryStream::flush() {
         if (_buffer) {
             getCategory().log(getPriority(), _buffer->str());
             delete _buffer;
             _buffer = NULL;
         }
+    }
+
+    CategoryStream& eol (CategoryStream& os) {
+        if  (os._buffer) {
+    		os.flush();
+        }
+        return os;
     }
 }

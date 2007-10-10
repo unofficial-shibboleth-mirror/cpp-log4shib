@@ -19,6 +19,12 @@
 namespace log4shib {
 
     class LOG4SHIB_EXPORT Category;
+    class LOG4SHIB_EXPORT CategoryStream;
+
+    /**
+     * eol manipulator
+     **/
+    LOG4SHIB_EXPORT CategoryStream& eol (CategoryStream& os);
 
     /**
      * This class enables streaming simple types and objects to a category.
@@ -26,14 +32,6 @@ namespace log4shib {
      **/
     class LOG4SHIB_EXPORT CategoryStream {
         public:
-
-        /**
-         * Enumeration of special 'Separators'. Currently only contains the
-         * 'ENDLINE' separator, which separates two log messages.
-         **/
-        typedef enum {
-            ENDLINE
-        } Separator;
 
         /**
          * Construct a CategoryStream for given Category with given priority.
@@ -63,15 +61,6 @@ namespace log4shib {
         };
 
         /**
-         * Streams in a Separator. If the separator equals 
-         * CategoryStream::ENDLINE it sends the contents of the stream buffer
-         * to the Category with set priority and empties the buffer.
-         * @param separator The Separator
-         * @returns A reference to itself.
-         **/
-        CategoryStream& operator<<(Separator separator);
-
-        /**
          * Flush the contents of the stream buffer to the Category and
          * empties the buffer.
          **/
@@ -98,6 +87,8 @@ namespace log4shib {
         Category& _category;
         Priority::Value _priority;
         std::ostringstream* _buffer;
+
+        LOG4SHIB_EXPORT friend CategoryStream& eol (CategoryStream& os);
     };
 
 }
