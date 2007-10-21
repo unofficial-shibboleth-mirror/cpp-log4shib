@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
     sub2.warnStream() << "streamed warn";
 
     sub2 << log4shib::Priority::WARN << "warn2.." << "..warn3..value=" << 0 << 
-        log4shib::CategoryStream::ENDLINE << "..warn4";
+        log4shib::eol << "..warn4";
 
     log4shib::Category::shutdown();
 
