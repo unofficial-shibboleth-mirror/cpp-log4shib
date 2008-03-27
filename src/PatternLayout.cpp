@@ -19,6 +19,7 @@
 #include <strstream>
 #endif
 
+#include <cstdlib>
 #include <iomanip>
 #include <ctime>
 #include <cmath>
