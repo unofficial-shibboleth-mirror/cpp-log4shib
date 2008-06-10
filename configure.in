@@ -112,15 +112,6 @@ LOG4SHIB_LIBS="-llog4shib"
 LOG4SHIB_LIBDEPS="$LIBS"
 LOG4SHIB_VERSION="$VERSION"
 
-# CXX fine tuning
-case "$host" in
-    *-dec-osf*)	  
-	CXXFLAGS="$CXXFLAGS -std strict_ansi_errors" 
-	;;
-    *)	
-	;;
-esac
-
 PETI_PEDANTIC_GCC
 
 # Create files
