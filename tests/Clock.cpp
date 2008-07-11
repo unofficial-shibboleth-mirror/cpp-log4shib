@@ -7,6 +7,7 @@ static const char rcsid[] = "$Id: Clock.cpp,v 1.9 2002/09/15 22:40:50 bastiaan E
 #include <cstdlib>
 #include <sys/time.h>			// for struct timeval
 #if defined(__linux__) && defined(__i386__)
+#    define rdtscl(low) \
      __asm__ __volatile__("rdtsc" : "=a" (low) : : "edx")
 #endif
 #include <iostream>
