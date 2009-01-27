@@ -1,29 +1,29 @@
 #ifndef _INCLUDE_LOG4SHIB_CONFIG_WIN32_H
 #define _INCLUDE_LOG4SHIB_CONFIG_WIN32_H 1
- 
+
 /* manually edited from include/log4shib/config.h */
 
 /* Define if you have the syslog function.  */
 /* #undef LOG4SHIB_HAVE_SYSLOG */
 
 /* Define if you have the `ftime' function. */
-#ifndef LOG4SHIB_HAVE_FTIME 
-#define LOG4SHIB_HAVE_FTIME  1 
+#ifndef LOG4SHIB_HAVE_FTIME
+#define LOG4SHIB_HAVE_FTIME  1
 #endif
 
 /* Define if you have the `gettimeofday' function. */
-/* #undef LOG4SHIB_HAVE_GETTIMEOFDAY */ 
+/* #undef LOG4SHIB_HAVE_GETTIMEOFDAY */
 
 /* define if the compiler has int64_t */
-#ifndef LOG4SHIB_HAVE_INT64_T 
+#ifndef LOG4SHIB_HAVE_INT64_T
 #define LOG4SHIB_HAVE_INT64_T
-#define int64_t __int64  
+#define int64_t __int64
 
 /* define if the compiler has in_addr_t */
-#ifndef LOG4SHIB_HAVE_IN_ADDR_T 
+#ifndef LOG4SHIB_HAVE_IN_ADDR_T
 #define LOG4SHIB_HAVE_IN_ADDR_T
 
-#ifndef u_long 
+#ifndef u_long
 typedef unsigned long u_long;
 #endif
 
@@ -36,7 +36,7 @@ typedef u_long in_addr_t;
 #endif
 
 #if defined(_MSC_VER) && _MSC_VER < 1300
-#define LOG4SHIB_MISSING_INT64_OSTREAM_OP   
+#define LOG4SHIB_MISSING_INT64_OSTREAM_OP
 #endif
 
 #endif
@@ -62,7 +62,7 @@ typedef u_long in_addr_t;
 
 /* Version number of package */
 #ifndef LOG4SHIB_VERSION
-#define LOG4SHIB_VERSION  "1.0.0"
+#define LOG4SHIB_VERSION  "1.0.1"
 #endif
 
 /* define if the compiler implements namespaces */

@@ -15,6 +15,11 @@
 
 namespace log4shib {
 
+#if defined (_MSC_VER)
+    #pragma warning( push )
+    #pragma warning( disable : 4275 )
+#endif
+
     /**
      * Exception class for configuration.
      */
@@ -26,6 +31,11 @@ namespace log4shib {
          */
         ConfigureFailure(const std::string& reason);
     };
+
+#if defined (_MSC_VER)
+    #pragma warning( pop )
+#endif
+
 }
 
 #endif // _LOG4SHIB_CONFIGURATOR_HH

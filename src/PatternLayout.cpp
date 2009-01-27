@@ -232,7 +232,7 @@ namespace log4shib {
             if (_maxWidth > 0 && _maxWidth < msg.length()) {
                 msg.erase(_maxWidth);
             }
-            int fillCount = _minWidth - msg.length();
+            std::string::size_type fillCount = _minWidth - msg.length();
             if (fillCount > 0) {
                 if (_alignLeft) {
                     out << msg << std::string(fillCount, ' ');
@@ -259,7 +259,7 @@ namespace log4shib {
     PatternLayout::PatternLayout() {
         try {
             setConversionPattern(DEFAULT_CONVERSION_PATTERN);
-        } catch(ConfigureFailure& e) {
+        } catch(ConfigureFailure&) {
         }
     }
 
@@ -374,7 +374,8 @@ namespace log4shib {
                     }
                     if ((minWidth != 0) || (maxWidth != 0)) {
                         component = new FormatModifierComponent(component, std::abs(minWidth), maxWidth, minWidth < 0);
-                        minWidth = maxWidth = 0;
+                        minWidth = 0;
+                        maxWidth = 0;
                     }
                     _components.push_back(component);
                     component = NULL;
