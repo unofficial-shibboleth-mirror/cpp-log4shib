@@ -1,5 +1,10 @@
 This file describes the changes to the Log for C++ library. See the repository for more detailed descriptions.
 
+2009-01-27 Scott Cantor <cantor.2@osu.edu>
+    * fixed some warnings
+    * added MSVC9 build files
+    * bumped version to 1.0.2
+
 2007-07-29 Scott Cantor <cantor.2@osu.edu>
 	* converted Internet2-patched project to log4shib
 
