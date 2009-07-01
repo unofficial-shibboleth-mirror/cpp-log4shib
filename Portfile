@@ -1,0 +1,32 @@
+PortSystem 1.0
+
+name               log4shib
+version            1.0.2
+revision           1
+categories         shibboleth
+maintainers        cantor.2@osu.edu
+description        configurable logging for C++, fork of log4cpp
+long_description   Log4shib is library of C++ classes for flexible logging to \
+                   files, syslog, IDSA and other destinations. It is modeled \
+                   after the Log4j Java library, staying as close to their \
+                   API as is reasonable.
+homepage           http://shibboleth.internet2.edu/
+master_sites       http://shibboleth.internet2.edu/downloads/log4shib/${version}/
+configure.args     --disable-doxygen \
+                   --disable-dot \
+                   --disable-html-docs \
+                   --disable-latex-docs \
+                   --disable-static
+checksums          sha1 fcaa592fa31a4fb0dd24e2d3397524554dea8199
+
+platform darwin 8 {
+    configure.env-append MACOSX_DEPLOYMENT_TARGET=10.4
+    build.env-append MACOSX_DEPLOYMENT_TARGET=10.4
+    destroot.env-append MACOSX_DEPLOYMENT_TARGET=10.4
+}
+
+platform darwin 9 {
+    configure.env-append MACOSX_DEPLOYMENT_TARGET=10.4
+    build.env-append MACOSX_DEPLOYMENT_TARGET=10.4
+    destroot.env-append MACOSX_DEPLOYMENT_TARGET=10.4
+}
