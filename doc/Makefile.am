@@ -1,7 +1,6 @@
 SUBDIRS = html
 
 man3dir = $(DESTDIR)$(mandir)/man3
-docdir  = $(prefix)/doc/@PACKAGE_TARNAME@-@PACKAGE_VERSION@
 
 EXTRA_DIST = \
 	mainPage.txt
@@ -30,7 +29,7 @@ install-data-local:
 	done
 	$(mkinstalldirs) $(docdir)
 	cp -r html/. $(docdir)
-	$(RM) -r -f $(docdir)/CVS \
+	$(RM) -r -f $(docdir)/.svn \
 		$(docdir)/Makefile.am \
 		$(docdir)/Makefile.in \
 		$(docdir)/Makefile
