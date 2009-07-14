@@ -61,5 +61,5 @@ docs:
 	$(MAKE) -C doc
 
 doc-dist: docs
-	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_srcdir)/doc/html --exclude CVS .
+	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_srcdir)/doc/html --exclude CVS --exclude .svn .
  
