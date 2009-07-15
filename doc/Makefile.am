@@ -29,7 +29,7 @@ install-data-local:
 		$(INSTALL_DATA) $$i $(man3dir)/$$inst; \
 	done
 	$(mkinstalldirs) $(apidir)
-	cp -r html/. $(apidir)
+	cp -r html $(apidir)
 	$(RM) -r -f $(apidir)/.svn \
 		$(apidir)/Makefile.am \
 		$(apidir)/Makefile.in \
