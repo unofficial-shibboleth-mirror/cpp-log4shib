@@ -1,6 +1,7 @@
 SUBDIRS = html
 
 man3dir = $(DESTDIR)$(mandir)/man3
+docdir = $(datadir)/doc/@PACKAGE@
 
 EXTRA_DIST = \
 	mainPage.txt
