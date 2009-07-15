@@ -30,10 +30,7 @@ install-data-local:
 	done
 	$(mkinstalldirs) $(apidir)
 	cp -r html $(apidir)
-	$(RM) -r -f $(apidir)/.svn \
-		$(apidir)/Makefile.am \
-		$(apidir)/Makefile.in \
-		$(apidir)/Makefile
+	$(RM) -r -f $(apidir)/html/.svn $(apidir)/html/Makefile*
 
 uninstall-local:
 	$(RM) $(man3dir)/log4shib.3
