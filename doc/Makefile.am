@@ -1,7 +1,7 @@
 SUBDIRS = html
 
 man3dir = $(DESTDIR)$(mandir)/man3
-docdir = $(datadir)/doc/@PACKAGE@
+apidir = $(DESTDIR)$(datadir)/doc/@PACKAGE@/api
 
 EXTRA_DIST = \
 	mainPage.txt
@@ -28,17 +28,17 @@ install-data-local:
 		echo "$(INSTALL_DATA) $$i $(man3dir)/$$inst"; \
 		$(INSTALL_DATA) $$i $(man3dir)/$$inst; \
 	done
-	$(mkinstalldirs) $(docdir)
-	cp -r html/. $(docdir)
-	$(RM) -r -f $(docdir)/.svn \
-		$(docdir)/Makefile.am \
-		$(docdir)/Makefile.in \
-		$(docdir)/Makefile
+	$(mkinstalldirs) $(apidir)
+	cp -r html/. $(apidir)
+	$(RM) -r -f $(apidir)/.svn \
+		$(apidir)/Makefile.am \
+		$(apidir)/Makefile.in \
+		$(apidir)/Makefile
 
 uninstall-local:
 	$(RM) $(man3dir)/log4shib.3
 	$(RM) $(man3dir)/log4shib::*.3
-	$(RM) -r -f $(docdir)
+	$(RM) -r -f $(apidir)
 
 clean-local:
 	$(RM) -r latex
