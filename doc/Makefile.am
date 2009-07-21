@@ -1,7 +1,7 @@
 SUBDIRS = html
 
 man3dir = $(DESTDIR)$(mandir)/man3
-apidir = $(DESTDIR)$(datadir)/doc/@PACKAGE@/api
+apidir = $(DESTDIR)$(datadir)/doc/@PACKAGE@-@PACKAGE_VERSION@/api
 
 EXTRA_DIST = \
 	mainPage.txt
