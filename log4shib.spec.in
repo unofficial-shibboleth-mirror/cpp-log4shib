@@ -1,5 +1,3 @@
-%define manualdir       /var/www/html/manual/%{name}
-
 Name:       @PACKAGE_TARNAME@
 Version:    @PACKAGE_VERSION@
 Release:    1
@@ -10,6 +8,13 @@ Vendor:     Internet2
 URL:        http://shibboleth.internet2.edu/
 Source:     http://shibboleth.internet2.edu/downloads/%name-%version.tar.gz
 BuildRoot:  %_tmppath/%name-%version-root
+BuildRequires:  gcc-c++
+
+%if "%{_vendor}" == "suse"
+%define pkgdocdir %{_docdir}/%{name}
+%else
+%define pkgdocdir %{_docdir}/%{name}-%{version}
+%endif
 
 %description
 Log for C++ is a library of classes for flexible logging to files, syslog,
@@ -40,12 +45,17 @@ the popular doxygen documentation generation tool.
 %setup -q
 
 %build
-%configure %{!?_without_doxygenrpm:--enable-doxygen} 
+%configure %{!?_without_doxygenrpm:--enable-doxygen} %{?_without_doxygenrpm:--disable-doxygen}
 %{__make}
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && %{__rm} -rf $RPM_BUILD_ROOT
-%{__make} DESTDIR=$RPM_BUILD_ROOT docdir=$RPM_BUILD_ROOT/%{manualdir} install
+%{__make} DESTDIR=$RPM_BUILD_ROOT apidir=$RPM_BUILD_ROOT%{pkgdocdir}/api install
+# If we use %doc down below to package the README files from the build tree,
+# it will blow away the package's docdir folder, and the installed API docs with it.
+# Instead, copy the README files manually into the platform's docdir.
+config/install-sh -d $RPM_BUILD_ROOT%{pkgdocdir}
+config/install-sh -m 644 -t $RPM_BUILD_ROOT%{pkgdocdir} AUTHORS COPYING INSTALL NEWS README THANKS ChangeLog
 
 %clean
 [ "$RPM_BUILD_ROOT" != "/" ] && %{__rm} -rf $RPM_BUILD_ROOT
@@ -67,7 +77,8 @@ fi
 %files
 %defattr(-,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*
-%doc AUTHORS COPYING INSTALL NEWS README THANKS ChangeLog
+%doc %{pkgdocdir}
+%{!?_without_doxygenrpm:%exclude %{pkgdocdir}/api}
 
 %files devel
 %defattr(-,root,root,755)
@@ -79,6 +90,6 @@ fi
 %attr(644,root,root) %{_libdir}/pkgconfig/log4shib.pc
 %attr(644,root,root) %{_datadir}/aclocal/*.m4
 
-%files doc
-%defattr(-,root,root)
-%{!?_without_doxygenrpm:%doc %{manualdir}}
+%{!?_without_doxygenrpm:%files doc}
+%{!?_without_doxygenrpm:%defattr(-,root,root)}
+%{!?_without_doxygenrpm:%doc %{pkgdocdir}/api}
