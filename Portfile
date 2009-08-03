@@ -18,15 +18,3 @@ configure.args     --disable-doxygen \
                    --disable-latex-docs \
                    --disable-static
 checksums          sha1 fcaa592fa31a4fb0dd24e2d3397524554dea8199
-
-platform darwin 8 {
-    configure.env-append MACOSX_DEPLOYMENT_TARGET=10.4
-    build.env-append MACOSX_DEPLOYMENT_TARGET=10.4
-    destroot.env-append MACOSX_DEPLOYMENT_TARGET=10.4
-}
-
-platform darwin 9 {
-    configure.env-append MACOSX_DEPLOYMENT_TARGET=10.4
-    build.env-append MACOSX_DEPLOYMENT_TARGET=10.4
-    destroot.env-append MACOSX_DEPLOYMENT_TARGET=10.4
-}
