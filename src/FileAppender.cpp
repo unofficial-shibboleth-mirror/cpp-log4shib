@@ -33,6 +33,8 @@ namespace log4shib {
         if (!append)
             _flags |= O_TRUNC;
         _fd = ::open(_fileName.c_str(), _flags, _mode);
+        if (_fd == -1)
+            throw std::runtime_error(std::string("failed to open log file (") + _fileName + ')');
     }
     
     FileAppender::FileAppender(const std::string& name, int fd) :
@@ -75,9 +77,11 @@ namespace log4shib {
     }
 
     void FileAppender::_append(const LoggingEvent& event) {
-        std::string message(_getLayout().format(event));
-        if (!::write(_fd, message.data(), message.length())) {
-            // XXX help! help!
+        if (_fd != -1) {
+            std::string message(_getLayout().format(event));
+            if (!::write(_fd, message.data(), message.length())) {
+                // XXX help! help!
+            }
         }
     }
 

@@ -51,7 +51,8 @@ namespace log4shib {
     }
 
     void RollingFileAppender::rollOver() {
-        ::close(_fd);
+        if (_fd != -1)
+            ::close(_fd);
         if (_maxBackupIndex > 0) {
             std::ostringstream oldName;
             oldName << _fileName << "." << _maxBackupIndex << std::ends;
@@ -76,7 +77,9 @@ namespace log4shib {
 
     void RollingFileAppender::_append(const LoggingEvent& event) {
         FileAppender::_append(event);
-        off_t offset = ::lseek(_fd, 0, SEEK_END);
+        off_t offset = -1;
+        if (_fd != -1)
+            offset = ::lseek(_fd, 0, SEEK_END);
         if (offset < 0) {
             // XXX we got an error, ignore for now
         } else {

@@ -83,7 +83,12 @@ namespace log4shib {
                         if (!(initFile >> logFileName)) {
                             throw ConfigureFailure("Missing filename for log file logging configuration file for category: " + categoryName);
                         }
-                        appender = new log4shib::FileAppender(categoryName, logFileName);
+                        try {
+                            appender = new log4shib::FileAppender(categoryName, logFileName);
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
                     }
                     else if (appenderName.compare("rolling") == 0) {
                         std::string logFileName;
@@ -92,25 +97,42 @@ namespace log4shib {
                         if (!(initFile >> logFileName)) {
                             throw ConfigureFailure("Missing filename for log file logging configuration file for category: " + categoryName);
                         }
-				if (!(initFile >> maxFileSize)) {
+                        if (!(initFile >> maxFileSize)) {
                             throw ConfigureFailure("Missing maximum size for log file logging configuration file for category: " + categoryName);
                         }
                         if (!(initFile >> maxBackupIndex)) {
                             throw ConfigureFailure("Missing maximum backup index for log file logging configuration file for category: " + categoryName);
                         }
-                        appender = new log4shib::RollingFileAppender(categoryName, logFileName, maxFileSize, maxBackupIndex);
+                        try {
+                            appender = new log4shib::RollingFileAppender(categoryName, logFileName, maxFileSize, maxBackupIndex);
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
                     }
                     else if (appenderName.compare("console") == 0) {
-                        appender =
-                            new log4shib::OstreamAppender(categoryName, &std::cout);
+                        try {
+                            appender = new log4shib::OstreamAppender(categoryName, &std::cout);
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
                     }
                     else if (appenderName.compare("stdout") == 0) {
-                        appender =
-                            new log4shib::FileAppender(categoryName, ::dup(fileno(stdout)));
+                        try {
+                            appender = new log4shib::FileAppender(categoryName, ::dup(fileno(stdout)));
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
                     }
                     else if (appenderName.compare("stderr") == 0) {
-                        appender =
-                            new log4shib::FileAppender(categoryName, ::dup(fileno(stderr)));
+                        try {
+                            appender = new log4shib::FileAppender(categoryName, ::dup(fileno(stderr)));
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
                     }
 #if LOG4SHIB_HAVE_SYSLOG
                     else if (appenderName.compare("syslog") == 0) {
@@ -125,9 +147,13 @@ namespace log4shib {
                             // * 8
                             facility *= 8;
                         }
-                        appender =
-                            new log4shib::SyslogAppender(categoryName, syslogName, facility);
-                    } 
+                        try {
+                            appender = new log4shib::SyslogAppender(categoryName, syslogName, facility);
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
+                    }
 #endif
 #if WIN32
                     else if (appenderName.compare("nteventlog") == 0) {
@@ -135,9 +161,13 @@ namespace log4shib {
                         if (!(initFile >> source)) {
                             throw ConfigureFailure("Missing source for NTEventLogAppender for category: " + categoryName);
                         }
-                        appender =
-                            new log4shib::NTEventLogAppender(categoryName, source);
-                    } 
+                        try {
+                            appender = new log4shib::NTEventLogAppender(categoryName, source);
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
+                    }
 #endif
                     else if (appenderName.compare("remotesyslog") == 0) {
                         std::string syslogName;
@@ -156,8 +186,13 @@ namespace log4shib {
                         if (!(initFile >> portNumber)) {
                             portNumber = 514;
                         }
-                        appender =
-                            new log4shib::RemoteSyslogAppender(categoryName, syslogName, relayer, facility, portNumber);
+                        try {
+                            appender =
+                                new log4shib::RemoteSyslogAppender(categoryName, syslogName, relayer, facility, portNumber);
+                        }
+                        catch (exception& ex) {
+                            throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
+                        }
                     } 
                     else {
                         throw ConfigureFailure("Invalid appender name (" +
@@ -170,13 +205,12 @@ namespace log4shib {
                     else if (layout.compare("simple") == 0)
                         appender->setLayout(new log4shib::SimpleLayout());
                     else if (layout.compare("pattern") == 0) {
-                        log4shib::PatternLayout *layout =
-                            new log4shib::PatternLayout();
-			initFile >> std::ws; // skip whitespace
+                        log4shib::PatternLayout *layout = new log4shib::PatternLayout();
+                        initFile >> std::ws; // skip whitespace
                         char pattern[1000];
                         initFile.getline(pattern, 1000);
                         layout->setConversionPattern(std::string(pattern));
-			appender->setLayout(layout);
+                        appender->setLayout(layout);
                     }
                     else {
                         throw ConfigureFailure("Invalid layout (" + layout +

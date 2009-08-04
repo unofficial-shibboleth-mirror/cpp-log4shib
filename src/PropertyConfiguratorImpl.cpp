@@ -119,8 +119,12 @@ namespace log4shib {
                 if (i2 == iEnd) {
                     // a new appender
                     currentAppender = appenderName;
-                    _allAppenders[currentAppender] = 
-                        instantiateAppender(currentAppender);
+                    try {
+                        _allAppenders[currentAppender] = instantiateAppender(currentAppender);
+                    }
+                    catch (std::exception& ex) {
+                        throw ConfigureFailure(std::string("exception creating appender: ") + ex.what());
+                    }
                 } else {
                     throw ConfigureFailure(std::string("partial appender definition : ") + key);
                 }

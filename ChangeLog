@@ -1,5 +1,9 @@
 This file describes the changes to the Log for C++ library. See the repository for more detailed descriptions.
 
+2009-08-04 Scott Cantor <cantor.2@osu.edu>
+    * fix error handling when Appenders fail
+    * correct crash when file appender can't open file
+
 2009-01-27 Scott Cantor <cantor.2@osu.edu>
     * fixed some warnings
     * added MSVC9 build files
