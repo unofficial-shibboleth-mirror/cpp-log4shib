@@ -86,7 +86,7 @@ namespace log4shib {
                         try {
                             appender = new log4shib::FileAppender(categoryName, logFileName);
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     }
@@ -106,7 +106,7 @@ namespace log4shib {
                         try {
                             appender = new log4shib::RollingFileAppender(categoryName, logFileName, maxFileSize, maxBackupIndex);
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     }
@@ -114,7 +114,7 @@ namespace log4shib {
                         try {
                             appender = new log4shib::OstreamAppender(categoryName, &std::cout);
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     }
@@ -122,7 +122,7 @@ namespace log4shib {
                         try {
                             appender = new log4shib::FileAppender(categoryName, ::dup(fileno(stdout)));
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     }
@@ -130,7 +130,7 @@ namespace log4shib {
                         try {
                             appender = new log4shib::FileAppender(categoryName, ::dup(fileno(stderr)));
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     }
@@ -150,7 +150,7 @@ namespace log4shib {
                         try {
                             appender = new log4shib::SyslogAppender(categoryName, syslogName, facility);
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     }
@@ -164,7 +164,7 @@ namespace log4shib {
                         try {
                             appender = new log4shib::NTEventLogAppender(categoryName, source);
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     }
@@ -190,7 +190,7 @@ namespace log4shib {
                             appender =
                                 new log4shib::RemoteSyslogAppender(categoryName, syslogName, relayer, facility, portNumber);
                         }
-                        catch (exception& ex) {
+                        catch (std::exception& ex) {
                             throw ConfigureFailure(std::string("Exception creating appender: ") + ex.what());
                         }
                     } 
