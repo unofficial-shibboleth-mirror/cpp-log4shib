@@ -46,7 +46,11 @@ Summary: Development tools for Log for C++
 Group: Development/Libraries
 Requires: %name = %version
 
+%if 0%{?suse_version} > 1030
+%description -n liblog4shib-devel
+%else
 %description devel
+%endif
 The %name-devel package contains the static libraries and header files
 needed for development with %name.
 
