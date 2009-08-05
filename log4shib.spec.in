@@ -22,7 +22,7 @@ and other destinations. It is modeled after the Log for Java library and
 stays as close to its API as is reasonable.
 
 %package devel
-Summary: development tools for Log for C++
+Summary: Development tools for Log for C++
 Group: Development/Libraries
 Requires: %name = %version
 
@@ -45,11 +45,10 @@ the popular doxygen documentation generation tool.
 %setup -q
 
 %build
-%configure %{!?_without_doxygenrpm:--enable-doxygen} %{?_without_doxygenrpm:--disable-doxygen}
+%configure %{!?_without_doxygenrpm:--enable-doxygen} %{?_without_doxygenrpm:--disable-doxygen} --enable-debug
 %{__make}
 
 %install
-[ "$RPM_BUILD_ROOT" != "/" ] && %{__rm} -rf $RPM_BUILD_ROOT
 %{__make} DESTDIR=$RPM_BUILD_ROOT apidir=$RPM_BUILD_ROOT%{pkgdocdir}/api install
 # If we use %doc down below to package the README files from the build tree,
 # it will blow away the package's docdir folder, and the installed API docs with it.
@@ -82,14 +81,18 @@ fi
 
 %files devel
 %defattr(-,root,root,755)
-%{_includedir}
-%{!?_without_doxygenrpm:%{_mandir}/*}
+%{_includedir}/log4shib
+%{!?_without_doxygenrpm:%{_mandir}/man3/*}
 %attr(755,root,root) %{_bindir}/log4shib-config
 %attr(755,root,root) %{_libdir}/*.so
-%attr(644,root,root) %{_libdir}/*a
+%attr(644,root,root) %{_libdir}/*.a
 %attr(644,root,root) %{_libdir}/pkgconfig/log4shib.pc
 %attr(644,root,root) %{_datadir}/aclocal/*.m4
 
 %{!?_without_doxygenrpm:%files doc}
 %{!?_without_doxygenrpm:%defattr(-,root,root)}
 %{!?_without_doxygenrpm:%doc %{pkgdocdir}/api}
+
+%changelog
+* Wed Aug 5 2006  Scott Cantor  <cantor.2@osu.edu>  - 1.0.3-1
+- Cleaned up specfile for OpenSUSE build service
