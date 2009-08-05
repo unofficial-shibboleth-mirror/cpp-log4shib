@@ -55,7 +55,7 @@ the popular doxygen documentation generation tool.
 # it will blow away the package's docdir folder, and the installed API docs with it.
 # Instead, copy the README files manually into the platform's docdir.
 config/install-sh -d $RPM_BUILD_ROOT%{pkgdocdir}
-config/install-sh -m 644 -t $RPM_BUILD_ROOT%{pkgdocdir} AUTHORS COPYING INSTALL NEWS README THANKS ChangeLog
+config/install-sh -m 644 -c AUTHORS COPYING INSTALL NEWS README THANKS ChangeLog $RPM_BUILD_ROOT%{pkgdocdir}
 
 %clean
 [ "$RPM_BUILD_ROOT" != "/" ] && %{__rm} -rf $RPM_BUILD_ROOT
