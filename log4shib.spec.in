@@ -5,8 +5,8 @@ Summary:    Log for C++, Shibboleth Edition
 License:    LGPL
 Group:      Development/Libraries
 Vendor:     Internet2
-URL:        http://shibboleth.internet2.edu/
-Source:     http://shibboleth.internet2.edu/downloads/%name-%version.tar.gz
+URL:        http://shibboleth.internet2.edu/downloads/log4shib/@PACKAGE_VERSION@
+Source:     %name-%version.tar.gz
 BuildRoot:  %_tmppath/%name-%version-root
 BuildRequires:  gcc-c++
 %{!?_without_doxygenrpm:BuildRequires: doxygen}
@@ -45,7 +45,6 @@ Requires: %name = %version
 %endif
 Summary: Development tools for Log for C++
 Group: Development/Libraries
-Requires: %name = %version
 
 %if 0%{?suse_version} > 1030
 %description -n liblog4shib-devel

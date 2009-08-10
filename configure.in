@@ -125,6 +125,7 @@ Makefile
 log4shib.spec
 log4shib.pc
 log4shib-config
+Portfile
 config/Makefile
 doc/Makefile
 doc/Doxyfile

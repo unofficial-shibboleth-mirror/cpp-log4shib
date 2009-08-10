@@ -15,7 +15,11 @@ pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = log4shib.pc
 
 EXTRA_DIST = \
-	log4shib.spec.in log4shib.spec log4shib.m4 \
+	log4shib.spec.in \
+	log4shib.spec \
+	log4shib.m4 \
+	Portfile.in \
+	Portfile \
 	m4/acx_pthread.m4 \
 	m4/ac_config_libconfig_in.m4 \
 	m4/ac_config_pkgconfig_in.m4 \
