@@ -10,6 +10,9 @@ Source:     %name-%version.tar.gz
 BuildRoot:  %_tmppath/%name-%version-root
 BuildRequires:  gcc-c++
 %{!?_without_doxygenrpm:BuildRequires: doxygen}
+%if "%{_vendor}" == "redhat"  
+BuildRequires: redhat-rpm-config  
+%endif  
 
 %if "%{_vendor}" == "suse"
 %define pkgdocdir %{_docdir}/%{name}
