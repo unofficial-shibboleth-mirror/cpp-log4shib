@@ -1,5 +1,8 @@
 This file describes the changes to the Log for C++ library. See the repository for more detailed descriptions.
 
+2009-11-18 Scott Cantor <cantor.2@osu.edu>
+    * port over upstream fixes for vararg bug on x86_64 and other small bugs
+
 2009-08-04 Scott Cantor <cantor.2@osu.edu>
     * fix error handling when Appenders fail
     * correct crash when file appender can't open file

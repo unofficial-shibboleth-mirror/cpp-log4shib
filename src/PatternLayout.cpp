@@ -233,7 +233,7 @@ namespace log4shib {
                 msg.erase(_maxWidth);
             }
             std::string::size_type fillCount = _minWidth - msg.length();
-            if (fillCount > 0) {
+            if (_minWidth > msg.length()) {
                 if (_alignLeft) {
                     out << msg << std::string(fillCount, ' ');
                 } else {

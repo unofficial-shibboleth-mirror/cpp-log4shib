@@ -11,6 +11,7 @@
 #include <log4shib/Appender.hh>
 
 namespace log4shib {
+    Appender::AppenderMap* Appender::_allAppenders = NULL;
     threading::Mutex Appender::_appenderMapMutex;
 
     /* assume _appenderMapMutex locked */
