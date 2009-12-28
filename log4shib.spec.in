@@ -39,10 +39,11 @@ stays as close to its API as is reasonable.
 This package contains just the shared library.
 
 %package -n lib@PACKAGE_NAME@-devel
-Requires:   lib@PACKAGE_NAME@1 = %version
-Obsoletes:  @PACKAGE_NAME@-devel
 Summary: Development tools for Log for C++
 Group: Development/Libraries
+Requires:   lib@PACKAGE_NAME@1 = %version
+Provides:	@PACKAGE_NAME@-devel = %version
+Obsoletes:  @PACKAGE_NAME@-devel
 
 %description -n lib@PACKAGE_NAME@-devel
 The static libraries and header files needed for development with @PACKAGE_NAME@.
