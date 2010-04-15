@@ -1,6 +1,6 @@
 Name:       @PACKAGE@
 Version:    @PACKAGE_VERSION@
-Release:    2
+Release:    1
 Summary:    Log for C++, Shibboleth Edition
 License:    LGPL
 Group:      Development/Libraries
