@@ -28,8 +28,8 @@ stays as close to its API as is reasonable.
 %package -n lib@PACKAGE_NAME@1
 Summary:    Log for C++, Shibboleth Edition
 Group:      Development/Libraries
-Provides:   @PACKAGE_NAME@ = %{version}
-Obsoletes:  @PACKAGE_NAME@
+Provides:   @PACKAGE_NAME@ = %{version}-%{release}
+Obsoletes:  @PACKAGE_NAME@ < %{version}-%{release}
 
 %description -n lib@PACKAGE_NAME@1
 Log for C++ is a library of classes for flexible logging to files, syslog,
@@ -41,9 +41,9 @@ This package contains just the shared library.
 %package -n lib@PACKAGE_NAME@-devel
 Summary: Development tools for Log for C++
 Group: Development/Libraries
-Requires:   lib@PACKAGE_NAME@1 = %version
-Provides:	@PACKAGE_NAME@-devel = %version
-Obsoletes:  @PACKAGE_NAME@-devel
+Requires:   lib@PACKAGE_NAME@1 = %{version}-%{release}
+Provides:	@PACKAGE_NAME@-devel = %{version}-%{release}
+Obsoletes:  @PACKAGE_NAME@-devel < %{version}-%{release}
 
 %description -n lib@PACKAGE_NAME@-devel
 The static libraries and header files needed for development with @PACKAGE_NAME@.
@@ -96,6 +96,9 @@ fi
 %doc %{pkgdocdir}
 
 %changelog
+* Thu Apr 29 2010  Scott Cantor  <cantor.2@osu.edu>  - 1.0.5-1
+- Fix Provides/Obsoletes versioning
+
 * Mon Dec 28 2009  Scott Cantor  <cantor.2@osu.edu>  - 1.0.4-1
 - Sync package naming to support side by side installs
 
