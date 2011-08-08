@@ -4,7 +4,7 @@
 dnl AM_PATH_LOG4SHIB([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND]]])
 dnl Test for LOG4SHIB, and define LOG4SHIB_CFLAGS and LOG4SHIB_LIBS
 dnl
-AC_DEFUN(AM_PATH_LOG4SHIB,
+AC_DEFUN([AM_PATH_LOG4SHIB],
 [dnl 
 dnl Get the cflags and libraries from the log4shib-config script
 dnl
