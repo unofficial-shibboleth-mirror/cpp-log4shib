@@ -28,6 +28,8 @@
 #include <arpa/inet.h>
 #endif
 
+using std::memcpy;
+
 namespace log4shib {
 
     int RemoteSyslogAppender::toSyslogPriority(Priority::Value priority) {
