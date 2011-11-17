@@ -256,7 +256,14 @@ if test "x$ax_pthread_ok" = xyes; then
         flag=no
         case "${host_cpu}-${host_os}" in
             *-aix* | *-freebsd* | *-darwin*) flag="-D_THREAD_SAFE";;
-            *solaris* | *-osf* | *-hpux*) flag="-D_REENTRANT";;
+            *-osf* | *-hpux*) flag="-D_REENTRANT";;
+            *solaris*)
+            if test "$GCC" = "yes"; then
+                flag="-D_REENTRANT"
+            else
+                flag="-mt -D_REENTRANT"
+            fi
+            ;;
         esac
         AC_MSG_RESULT(${flag})
         if test "x$flag" != xno; then
