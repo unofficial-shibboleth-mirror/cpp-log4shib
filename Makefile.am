@@ -19,19 +19,7 @@ EXTRA_DIST = \
 	log4shib.spec \
 	log4shib.m4 \
 	Portfile.in \
-	Portfile \
-	m4/acx_pthread.m4 \
-	m4/ac_config_libconfig_in.m4 \
-	m4/ac_config_pkgconfig_in.m4 \
-	m4/AC_CREATE_PREFIX_CONFIG_H.m4 \
-	m4/BB_ENABLE_DOXYGEN.m4 \
-	m4/AC_CXX_HAVE_SSTREAM.m4 \
-	m4/AC_CXX_NAMESPACES.m4 \
-	m4/PETI_PEDANTIC_GCC.m4 \
-	m4/AC_FUNC_SNPRINTF.m4 \
-	m4/AC_C_INT64_T.m4 \
-	m4/BB_CHECK_OMNITHREADS.m4 \
-	m4/BB_CHECK_PTHREADS.m4
+	Portfile
 
 .PHONY: check rpm docs doc-dist
 
