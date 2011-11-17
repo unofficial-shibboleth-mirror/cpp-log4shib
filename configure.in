@@ -11,7 +11,7 @@ AC_PREREQ(2.50)
 #  ? :+1 : ?   == just some internal changes, nothing breaks but might work 
 #                 better
 # CURRENT : REVISION : AGE
-LT_VERSION=1:4:0
+LT_VERSION=1:5:0
 
 AC_SUBST(LT_VERSION)
 
@@ -74,7 +74,7 @@ AC_CHECK_LIB(socket,socket, LIBS="-lsocket $LIBS",,)
 AC_CHECK_LIB(nsl,gethostbyname, LIBS="-lnsl $LIBS",,)
 
 # checks for pthreads
-ACX_PTHREAD([enable_threads="pthread"],[enable_threads="no"])
+AX_PTHREAD([enable_threads="pthread"],[enable_threads="no"])
 if test $enable_threads != "pthread"; then
     AC_MSG_ERROR([unable to find pthreads, currently this is required])
 else
@@ -85,6 +85,7 @@ else
     LIBS="$PTHREAD_LIBS $LIBS"
     CFLAGS="$PTHREAD_CFLAGS $CFLAGS"
     CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
+    CC="$PTHREAD_CC"
 fi
 
 AC_LANG(C++)
