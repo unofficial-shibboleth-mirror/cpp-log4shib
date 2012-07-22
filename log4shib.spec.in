@@ -4,8 +4,8 @@ Release:    1
 Summary:    Log for C++, Shibboleth Edition
 License:    LGPL
 Group:      Development/Libraries
-Vendor:     Internet2
-URL:        http://shibboleth.internet2.edu/downloads/@PACKAGE_NAME@/@PACKAGE_VERSION@
+Vendor:     Shibboleth Consortium
+URL:        http://shibboleth.net/downloads/@PACKAGE_NAME@/@PACKAGE_VERSION@
 Source:     %name-%version.tar.gz
 BuildRoot:  %_tmppath/%name-%version-root
 BuildRequires:  gcc-c++
@@ -96,8 +96,9 @@ fi
 %doc %{pkgdocdir}
 
 %changelog
-* Thu Apr 29 2010  Scott Cantor  <cantor.2@osu.edu>  - 1.0.5-1
+* Sat Jul 21 2012  Scott Cantor  <cantor.2@osu.edu>  - 1.0.5-1
 - Fix Provides/Obsoletes versioning
+- Update Vendor and URL
 
 * Mon Dec 28 2009  Scott Cantor  <cantor.2@osu.edu>  - 1.0.4-1
 - Sync package naming to support side by side installs
