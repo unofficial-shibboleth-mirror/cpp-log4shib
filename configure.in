@@ -18,6 +18,7 @@ AC_SUBST(LT_VERSION)
 #AC_CONFIG_SRCDIR(configure.in)
 AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(include/config.h)
+AX_PREFIX_CONFIG_H([include/log4shib/config.h])
 
 AM_INIT_AUTOMAKE
 
@@ -51,6 +52,14 @@ if test "$GCC" = "yes" ; then
     CFLAGS="-Wall $GCC_CFLAGS"
     CXXFLAGS="-Wall $GCC_CXXFLAGS"
 fi
+
+# Enables POSIX semantics for some functions.
+case "${host_cpu}-${host_os}" in
+    *solaris*)
+        CFLAGS="$CFLAGS -D_POSIX_PTHREAD_SEMANTICS"
+        CXXFLAGS="$CXXFLAGS -D_POSIX_PTHREAD_SEMANTICS"
+    ;;
+esac
 
 AC_PROG_CXXCPP
 AC_LANG(C)
@@ -183,6 +192,3 @@ bcb5/testPattern/Makefile
 openvms/Makefile
 ])
 AC_OUTPUT
-
-AC_CREATE_PREFIX_CONFIG_H([include/log4shib/config.h], 
-        $PACKAGE_TARNAME, [include/config.h])
