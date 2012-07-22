@@ -24,6 +24,10 @@
 #include <ctime>
 #include <cmath>
 
+#ifdef _POSIX_PTHREAD_SEMANTICS
+# include <time.h>
+#endif
+
 #ifdef LOG4SHIB_HAVE_INT64_T
 #ifdef LOG4SHIB_HAVE_STDINT_H
 #include <stdint.h>
