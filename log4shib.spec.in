@@ -91,6 +91,7 @@ fi
 %attr(755,root,root) %{_libdir}/*.so
 %attr(644,root,root) %{_libdir}/*.a
 %attr(644,root,root) %{_libdir}/pkgconfig/@PACKAGE_NAME@.pc
+%dir %{_datadir}/aclocal
 %attr(644,root,root) %{_datadir}/aclocal/*.m4
 %exclude %{_libdir}/*.la
 %doc %{pkgdocdir}
