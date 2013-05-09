@@ -180,9 +180,13 @@ namespace log4shib {
                 // appender not found;
                 throw ConfigureFailure(std::string("Appender '") +
                     appenderName + "' not found for category '" + categoryName + "'");
+            } else if (categoryName == "rootCategory") {
+
+                /* pass by pointer, i.e. transfer ownership */
+                category.addAppender((*appIt).second);
             } else {
-                /* pass by reference, i.e. don't transfer ownership
-                 */
+
+                /* pass by reference, i.e. don't transfer ownership */
                 category.addAppender(*((*appIt).second));
             }
         }
