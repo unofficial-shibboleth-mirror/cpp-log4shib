@@ -1,3 +1,6 @@
+AUTOMAKE_OPTIONS = foreign
+ACLOCAL_AMFLAGS = -I m4
+
 if DOC
 SUBDIRS = debian msvc6 msvc8 msvc9 msvc10 bcb5 config src include tests doc 
 else

@@ -10,8 +10,8 @@
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,5,0
- PRODUCTVERSION 1,0,5,0
+ FILEVERSION 1,0,6,0
+ PRODUCTVERSION 1,0,6,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -30,9 +30,9 @@ BEGIN
             VALUE "CompanyName", "Internet2\0"
             VALUE "ContributingAuthors", "Cedric Le Goater, Marc Welz, others. See documentation for complete list\0"     
             VALUE "FileDescription", "Log library for C++ DLL\0"
-            VALUE "FileVersion", "1.0.5\0"
+            VALUE "FileVersion", "1.0.6\0"
             VALUE "InternalName", "log4shib\0"
-            VALUE "LegalCopyright", "Copyright © 2000-2002 the Log4cpp Project, others\0"
+            VALUE "LegalCopyright", "Copyright © 2000-2013 the Log4cpp Project, others\0"
             VALUE "LegalTrademarks", "\0"
 #ifdef _DEBUG
             VALUE "OriginalFilename", "log4shib1_0D.dll\0"
@@ -41,7 +41,7 @@ BEGIN
 #endif
             VALUE "PrivateBuild", "\0"
             VALUE "ProductName", "Log library for C++\0"
-            VALUE "ProductVersion", "1.0.5\0"
+            VALUE "ProductVersion", "1.0.6\0"
             VALUE "SpecialBuild", "\0"
         END
     END

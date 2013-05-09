@@ -12,7 +12,7 @@ EXTRA_DIST = log4shib.init log4shib.properties testProperties.properties \
 
 noinst_PROGRAMS = testmain testbench
 
-INCLUDES = -I$(top_srcdir)/include -I$(top_srcdir)/src
+AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/src
 
 testmain_SOURCES = testmain.cpp
 testmain_LDADD = $(top_builddir)/src/liblog4shib.la

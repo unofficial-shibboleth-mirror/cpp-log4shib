@@ -1,4 +1,4 @@
-AC_INIT(log4shib, 1.0.5)
+AC_INIT(log4shib, 1.0.6)
 
 # autoconf 2.50 or higher to rebuild aclocal.m4, because the
 # AC_CREATE_PREFIX_CONFIG_H macro needs the AS_DIRNAME macro.
@@ -11,15 +11,15 @@ AC_PREREQ(2.50)
 #  ? :+1 : ?   == just some internal changes, nothing breaks but might work 
 #                 better
 # CURRENT : REVISION : AGE
-LT_VERSION=1:5:0
+LT_VERSION=1:6:0
 
 AC_SUBST(LT_VERSION)
 
 #AC_CONFIG_SRCDIR(configure.in)
 AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(include/config.h)
+AC_CONFIG_HEADERS([include/config.h])
 AX_PREFIX_CONFIG_H([include/log4shib/config.h])
-
+AC_CONFIG_MACRO_DIR(m4)
 AM_INIT_AUTOMAKE
 
 # General "with" options
