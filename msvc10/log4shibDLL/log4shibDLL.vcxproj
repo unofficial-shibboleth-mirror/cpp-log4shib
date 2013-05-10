@@ -634,25 +634,25 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(OutDir) md $(OutDir)
 "$(WindowsSdkDir)\Bin\mc.exe" -h $(OutDir) -r $(OutDir) $(ProjectDir)..\%(Filename).mc
 "$(WindowsSdkDir)\Bin\RC.exe" -r -fo $(OutDir)%(Filename).res $(OutDir)%(Filename).rc
-"$(DevEnvDir)..\..\VC\Bin\link.exe" /MACHINE:IX86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
+link.exe /MACHINE:X86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)NTEventLogAppender.dll;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if not exist $(OutDir) md $(OutDir)
 "$(WindowsSdkDir)\Bin\mc.exe" -h $(OutDir) -r $(OutDir) $(ProjectDir)..\%(Filename).mc
 "$(WindowsSdkDir)\Bin\RC.exe" -r -fo $(OutDir)%(Filename).res $(OutDir)%(Filename).rc
-"$(DevEnvDir)..\..\VC\Bin\link.exe" /MACHINE:IX86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
+link.exe /MACHINE:X64 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)NTEventLogAppender.dll;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist $(OutDir) md $(OutDir)
 "$(WindowsSdkDir)\Bin\mc.exe" -h $(OutDir) -r $(OutDir) $(ProjectDir)..\%(Filename).mc
 "$(WindowsSdkDir)\Bin\RC.exe" -r -fo $(OutDir)%(Filename).res $(OutDir)%(Filename).rc
-"$(DevEnvDir)..\..\VC\Bin\link.exe" /MACHINE:IX86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
+link.exe /MACHINE:X86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)NTEventLogAppender.dll;%(Outputs)</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if not exist $(OutDir) md $(OutDir)
 "$(WindowsSdkDir)\Bin\mc.exe" -h $(OutDir) -r $(OutDir) $(ProjectDir)..\%(Filename).mc
 "$(WindowsSdkDir)\Bin\RC.exe" -r -fo $(OutDir)%(Filename).res $(OutDir)%(Filename).rc
-"$(DevEnvDir)..\..\VC\Bin\link.exe" /MACHINE:IX86 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
+link.exe /MACHINE:X64 -dll -noentry -out:$(OutDir)NTEventLogAppender.dll $(OutDir)%(Filename).res
 </Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)NTEventLogAppender.dll;%(Outputs)</Outputs>
     </CustomBuild>
