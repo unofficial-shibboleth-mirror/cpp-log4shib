@@ -39,7 +39,7 @@ liblog4shibinclude_HEADERS =  \
 	config-openvms.h
 
 dist-hook:
-	$(RM) -f $(distdir)/config.h
+	rm -f $(distdir)/config.h
 
 distclean-local:
-	$(RM) config.h
+	rm -f config.h
