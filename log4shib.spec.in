@@ -97,6 +97,9 @@ fi
 %doc %{pkgdocdir}
 
 %changelog
+* Thu May 23 2013  Scott Cantor  <cantor.2@osu.edu>  - 1.0.6-1
+- Patch to limit file handle leakage from prop-based configs
+
 * Sat Jul 21 2012  Scott Cantor  <cantor.2@osu.edu>  - 1.0.5-1
 - Fix Provides/Obsoletes versioning
 - Update Vendor and URL
