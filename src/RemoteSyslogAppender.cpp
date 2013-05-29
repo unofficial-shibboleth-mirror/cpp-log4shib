@@ -122,6 +122,13 @@ namespace log4shib {
             // loglog("RemoteSyslogAppender: failed to open socket");
             return; // fail silently                    
         }
+#if !defined(HAVE_SOCK_CLOEXEC) && defined(HAVE_FD_CLOEXEC)
+                int fdflags = ::fcntl(_socket, F_GETFD);
+                if (fdflags != -1) {
+                    fdflags |= FD_CLOEXEC;
+                    ::fcntl(_socket, F_SETFD, fdflags);
+                }
+#endif
     }
 
     void RemoteSyslogAppender::close() {
