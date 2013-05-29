@@ -15,6 +15,7 @@
 #    include <unistd.h>
 #endif
 
+#include <fcntl.h>
 #include <stdio.h>
 #include <time.h>
 #include <log4shib/FileAppender.hh>
@@ -32,9 +33,19 @@ namespace log4shib {
             _mode(mode) {
         if (!append)
             _flags |= O_TRUNC;
+#ifdef HAVE_O_CLOEXEC
+        _flags |= O_CLOEXEC;
+#endif
         _fd = ::open(_fileName.c_str(), _flags, _mode);
         if (_fd == -1)
             throw std::runtime_error(std::string("failed to open log file (") + _fileName + ')');
+#if !defined(HAVE_O_CLOEXEC) && defined(HAVE_FD_CLOEXEC)
+        int fdflags = ::fcntl(_fd, F_GETFD);
+        if (fdflags != -1) {
+            fdflags |= FD_CLOEXEC;
+            ::fcntl(_fd, F_SETFD, fdflags);
+        }
+#endif
     }
     
     FileAppender::FileAppender(const std::string& name, int fd) :
@@ -43,6 +54,9 @@ namespace log4shib {
         _fd(fd),
         _flags(O_CREAT | O_APPEND | O_WRONLY),
         _mode(00644) {
+#ifdef HAVE_O_CLOEXEC
+        _flags |= O_CLOEXEC;
+#endif
     }
     
     FileAppender::~FileAppender() {
@@ -50,9 +64,9 @@ namespace log4shib {
     }
 
     void FileAppender::close() {
-        if (_fd!=-1) {
+        if (_fd != -1) {
             ::close(_fd);
-            _fd=-1;
+            _fd = -1;
         }
     }
 
@@ -91,9 +105,16 @@ namespace log4shib {
             if (fd < 0)
                 return false;
             else {
-	        if (_fd != -1)
+                if (_fd != -1)
                     ::close(_fd);
                 _fd = fd;
+#if !defined(HAVE_O_CLOEXEC) && defined(HAVE_FD_CLOEXEC)
+                int fdflags = ::fcntl(_fd, F_GETFD);
+                if (fdflags != -1) {
+                    fdflags |= FD_CLOEXEC;
+                    ::fcntl(_fd, F_SETFD, fdflags);
+                }
+#endif
                 return true;
             }
         } else {

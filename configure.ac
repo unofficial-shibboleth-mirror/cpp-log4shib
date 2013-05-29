@@ -1,4 +1,4 @@
-AC_INIT(log4shib, 1.0.6)
+AC_INIT(log4shib, 1.0.7)
 
 # autoconf 2.50 or higher to rebuild aclocal.m4, because the
 # AC_CREATE_PREFIX_CONFIG_H macro needs the AS_DIRNAME macro.
@@ -11,7 +11,7 @@ AC_PREREQ(2.50)
 #  ? :+1 : ?   == just some internal changes, nothing breaks but might work 
 #                 better
 # CURRENT : REVISION : AGE
-LT_VERSION=1:6:0
+LT_VERSION=1:7:0
 
 AC_SUBST(LT_VERSION)
 
@@ -68,6 +68,29 @@ AC_LANG(C)
 # ----------------------------------------------------------------------------
 AC_CHECK_HEADERS([unistd.h])
 AC_CHECK_HEADERS([io.h])
+
+
+# Checks close-on-exec functionality
+# ----------------------------------------------------------------------------
+AC_CHECK_DECL([O_CLOEXEC],
+        [AC_DEFINE([HAVE_O_CLOEXEC],[1],[Define to 1 if open supports O_CLOEXEC flag.])],,
+        [#include <fcntl.h>])
+AC_CHECK_DECL([FD_CLOEXEC],
+        [AC_DEFINE([HAVE_FD_CLOEXEC],[1],[Define to 1 if fcntl supports FD_CLOEXEC flag.])],,
+        [#include <fcntl.h>])
+AC_CACHE_CHECK([for SOCK_CLOEXEC support], [log_cv_sock_cloexec],
+[AC_TRY_RUN([
+#include <sys/types.h>
+#include <sys/socket.h>
+int main()
+{
+return socket(AF_INET, SOCK_STREAM|SOCK_CLOEXEC, 0) == -1;
+}], [log_cv_sock_cloexec=yes], [log_cv_sock_cloexec=no], [log_cv_sock_cloexec=no])])
+
+if test "$log_cv_sock_cloexec" = "yes"; then
+	AC_DEFINE([HAVE_SOCK_CLOEXEC], 1, [Define if the SOCK_CLOEXEC flag is supported])
+fi
+
 
 # Checks local idioms
 # ----------------------------------------------------------------------------

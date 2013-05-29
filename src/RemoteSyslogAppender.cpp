@@ -60,12 +60,12 @@ namespace log4shib {
 				   int portNumber) : 
         LayoutAppender(name),
         _syslogName(syslogName),
-	_relayer(relayer),
+        _relayer(relayer),
         _facility((facility == -1) ? LOG_USER : facility),
-	_portNumber((portNumber == -1) ? 514 : portNumber),
-	_socket (0),
-	_ipAddr (0),
-	_cludge (0)
+        _portNumber((portNumber == -1) ? 514 : portNumber),
+        _socket (0),
+        _ipAddr (0),
+        _cludge (0)
     {
         open();
     }
@@ -81,54 +81,58 @@ namespace log4shib {
     }
 
     void RemoteSyslogAppender::open() {
-	if (!_ipAddr) {
-	    struct hostent *pent = gethostbyname (_relayer.c_str ());
+        if (!_ipAddr) {
+            struct hostent *pent = gethostbyname (_relayer.c_str ());
 #ifdef WIN32
-	    if (pent == NULL) {
-		if (WSAGetLastError () == WSANOTINITIALISED) {
-		    WSADATA wsaData;
-		    int err;
- 
-		    err = WSAStartup (0x101, &wsaData );
-		    if (err) {
-                        // loglog("RemoteSyslogAppender: WSAStartup returned %d", err);
-                        return; // fail silently
-                    }
-		    pent = gethostbyname (_relayer.c_str ());
-		    _cludge = 1;
-		} else {
-		    // loglog("RemoteSyslogAppender: gethostbyname returned error");
-                    return; // fail silently
-		}
-	    }
-#endif
-	    if (pent == NULL) {
-		in_addr_t ip = inet_addr (_relayer.c_str ());
-		pent = gethostbyaddr ((const char *) &ip, sizeof(in_addr_t), AF_INET);
-                if (pent == NULL) {
-                    // loglog("RemoteSyslogAppender: failed to resolve host %s", _relayer.c_str());
-                    return; // fail silently                    
+            if (pent == NULL) {
+                if (WSAGetLastError () == WSANOTINITIALISED) {
+                    WSADATA wsaData;
+                    int err;
+
+                    err = WSAStartup (0x101, &wsaData );
+                    if (err) {
+                                // loglog("RemoteSyslogAppender: WSAStartup returned %d", err);
+                                return; // fail silently
+                            }
+                    pent = gethostbyname (_relayer.c_str ());
+                    _cludge = 1;
+                } else {
+                    // loglog("RemoteSyslogAppender: gethostbyname returned error");
+                            return; // fail silently
                 }
             }
-	    _ipAddr = *(pent->h_addr);
-	}
-	// Get a datagram socket.
-	
-	if ((_socket = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
+#endif
+            if (pent == NULL) {
+                in_addr_t ip = inet_addr (_relayer.c_str ());
+                pent = gethostbyaddr ((const char *) &ip, sizeof(in_addr_t), AF_INET);
+                    if (pent == NULL) {
+                        // loglog("RemoteSyslogAppender: failed to resolve host %s", _relayer.c_str());
+                        return; // fail silently
+                    }
+            }
+            _ipAddr = *(pent->h_addr);
+        }
+
+        // Get a datagram socket.
+        int type = SOCK_DGRAM;
+#ifdef HAVE_SOCK_CLOEXEC
+        type |= SOCK_CLOEXEC;
+#endif
+        if ((_socket = socket(AF_INET, type, 0)) < 0) {
             // loglog("RemoteSyslogAppender: failed to open socket");
             return; // fail silently                    
-	}
+        }
     }
 
     void RemoteSyslogAppender::close() {
-	if (_socket) {
+        if (_socket) {
 #ifdef WIN32
-	    closesocket (_socket);
+            closesocket (_socket);
 #else
-	    ::close (_socket);
+            ::close (_socket);
 #endif
-	    _socket = 0;
-	}
+            _socket = 0;
+        }
     }
 
     void RemoteSyslogAppender::_append(const LoggingEvent& event) {

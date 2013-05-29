@@ -73,6 +73,13 @@ namespace log4shib {
             ::rename(_fileName.c_str(), oldName.str().c_str());
         }
         _fd = ::open(_fileName.c_str(), _flags, _mode);
+#if !defined(HAVE_O_CLOEXEC) && defined(HAVE_FD_CLOEXEC)
+        int fdflags = ::fcntl(_fd, F_GETFD);
+        if (fdflags != -1) {
+            fdflags |= FD_CLOEXEC;
+            ::fcntl(_fd, F_SETFD, fdflags);
+        }
+#endif
     }
 
     void RollingFileAppender::_append(const LoggingEvent& event) {
