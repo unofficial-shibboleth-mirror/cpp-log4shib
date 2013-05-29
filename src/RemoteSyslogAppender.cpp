@@ -115,14 +115,14 @@ namespace log4shib {
 
         // Get a datagram socket.
         int type = SOCK_DGRAM;
-#ifdef HAVE_SOCK_CLOEXEC
+#ifdef LOG4SHIB_HAVE_SOCK_CLOEXEC
         type |= SOCK_CLOEXEC;
 #endif
         if ((_socket = socket(AF_INET, type, 0)) < 0) {
             // loglog("RemoteSyslogAppender: failed to open socket");
             return; // fail silently                    
         }
-#if !defined(HAVE_SOCK_CLOEXEC) && defined(HAVE_FD_CLOEXEC)
+#if !defined(LOG4SHIB_HAVE_SOCK_CLOEXEC) && defined(LOG4SHIB_HAVE_FD_CLOEXEC)
                 int fdflags = ::fcntl(_socket, F_GETFD);
                 if (fdflags != -1) {
                     fdflags |= FD_CLOEXEC;

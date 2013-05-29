@@ -33,13 +33,13 @@ namespace log4shib {
             _mode(mode) {
         if (!append)
             _flags |= O_TRUNC;
-#ifdef HAVE_O_CLOEXEC
+#ifdef LOG4SHIB_HAVE_O_CLOEXEC
         _flags |= O_CLOEXEC;
 #endif
         _fd = ::open(_fileName.c_str(), _flags, _mode);
         if (_fd == -1)
             throw std::runtime_error(std::string("failed to open log file (") + _fileName + ')');
-#if !defined(HAVE_O_CLOEXEC) && defined(HAVE_FD_CLOEXEC)
+#if !defined(LOG4SHIB_HAVE_O_CLOEXEC) && defined(LOG4SHIB_HAVE_FD_CLOEXEC)
         int fdflags = ::fcntl(_fd, F_GETFD);
         if (fdflags != -1) {
             fdflags |= FD_CLOEXEC;
@@ -54,8 +54,15 @@ namespace log4shib {
         _fd(fd),
         _flags(O_CREAT | O_APPEND | O_WRONLY),
         _mode(00644) {
-#ifdef HAVE_O_CLOEXEC
+#ifdef LOG4SHIB_HAVE_O_CLOEXEC
         _flags |= O_CLOEXEC;
+#endif
+#if !defined(LOG4SHIB_HAVE_O_CLOEXEC) && defined(LOG4SHIB_HAVE_FD_CLOEXEC)
+        int fdflags = ::fcntl(_fd, F_GETFD);
+        if (fdflags != -1) {
+            fdflags |= FD_CLOEXEC;
+            ::fcntl(_fd, F_SETFD, fdflags);
+        }
 #endif
     }
     
@@ -108,7 +115,7 @@ namespace log4shib {
                 if (_fd != -1)
                     ::close(_fd);
                 _fd = fd;
-#if !defined(HAVE_O_CLOEXEC) && defined(HAVE_FD_CLOEXEC)
+#if !defined(LOG4SHIB_HAVE_O_CLOEXEC) && defined(LOG4SHIB_HAVE_FD_CLOEXEC)
                 int fdflags = ::fcntl(_fd, F_GETFD);
                 if (fdflags != -1) {
                     fdflags |= FD_CLOEXEC;
