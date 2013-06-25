@@ -2,13 +2,15 @@
 
 #if defined(LOG4SHIB_HAVE_THREADING) && defined(LOG4SHIB_USE_PTHREADS)
 
+#include <sstream>
+
 namespace log4shib {
     namespace threading {
 
         std::string getThreadId() {
-            char buffer[16];
-            ::sprintf(buffer, "%ld", pthread_self());
-            return std::string(buffer);     
+            std::ostringstream os;
+            os << pthread_self();
+            return os.str();
         }
 
     }
