@@ -1,4 +1,4 @@
-AC_INIT(log4shib, 1.0.8)
+AC_INIT(log4shib, 1.0.9)
 
 # autoconf 2.50 or higher to rebuild aclocal.m4, because the
 # AC_CREATE_PREFIX_CONFIG_H macro needs the AS_DIRNAME macro.
@@ -11,7 +11,7 @@ AC_PREREQ(2.50)
 #  ? :+1 : ?   == just some internal changes, nothing breaks but might work 
 #                 better
 # CURRENT : REVISION : AGE
-LT_VERSION=1:8:0
+LT_VERSION=1:9:0
 
 AC_SUBST(LT_VERSION)
 
@@ -24,14 +24,14 @@ AM_INIT_AUTOMAKE
 
 # General "with" options
 # ----------------------------------------------------------------------------
-AC_ARG_WITH(idsa, [  --with-idsa             include idsa support])
+AC_ARG_WITH(idsa, AS_HELP_STRING(--with-idsa, [include idsa support]),)
 
 # Checks for programs
 # ----------------------------------------------------------------------------
 AC_CANONICAL_HOST
 
 AC_ARG_ENABLE(debug,
-    AC_HELP_STRING(--enable-debug, [Have GCC compile with symbols (Default = no)]),
+    AS_HELP_STRING(--enable-debug, [Have GCC compile with symbols (Default = no)]),
     enable_debug=$enableval, enable_debug=no)
 
 if test "$enable_debug" = "yes" ; then
@@ -126,7 +126,7 @@ AC_CXX_HAVE_SSTREAM
 
 # idsa_test
 if test "x$with_idsa" = xyes; then
-    AC_CHECK_LIB([idsa], [idsa_open])
+    AC_CHECK_LIB([idsa], [idsa_open],)
     if test "$ac_cv_lib_idsa_idsa_open" = no; then
         AC_MSG_ERROR([could not locate idsa library])
     fi

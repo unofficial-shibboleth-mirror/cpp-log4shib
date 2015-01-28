@@ -10,7 +10,7 @@
 #include "PortabilityImpl.hh"
 
 #ifdef LOG4SHIB_HAVE_UNISTD_H
-#    include <unistd.h>
+# include <unistd.h>
 #endif
 #include <cstdlib>
 #include <cstdio>
@@ -19,13 +19,15 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <log4shib/RemoteSyslogAppender.hh>
+#include <sstream>
 #ifdef WIN32
-#include <winsock2.h>
+# include <winsock2.h>
+# include <ws2tcpip.h>
 #else
-#include <netdb.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
+# include <netdb.h>
+# include <sys/socket.h>
+# include <netinet/in.h>
+# include <arpa/inet.h>
 #endif
 
 using std::memcpy;
@@ -55,9 +57,9 @@ namespace log4shib {
 
     RemoteSyslogAppender::RemoteSyslogAppender(const std::string& name, 
                                    const std::string& syslogName, 
-				   const std::string& relayer,
+                                   const std::string& relayer,
                                    int facility,
-				   int portNumber) : 
+                                   int portNumber) :
         LayoutAppender(name),
         _syslogName(syslogName),
         _relayer(relayer),
@@ -72,47 +74,9 @@ namespace log4shib {
     
     RemoteSyslogAppender::~RemoteSyslogAppender() {
         close();
-#ifdef WIN32
-	if (_cludge) {
-	    // we started it, we end it.
-	    WSACleanup ();
-	}
-#endif
     }
 
     void RemoteSyslogAppender::open() {
-        if (!_ipAddr) {
-            struct hostent *pent = gethostbyname (_relayer.c_str ());
-#ifdef WIN32
-            if (pent == NULL) {
-                if (WSAGetLastError () == WSANOTINITIALISED) {
-                    WSADATA wsaData;
-                    int err;
-
-                    err = WSAStartup (0x101, &wsaData );
-                    if (err) {
-                                // loglog("RemoteSyslogAppender: WSAStartup returned %d", err);
-                                return; // fail silently
-                            }
-                    pent = gethostbyname (_relayer.c_str ());
-                    _cludge = 1;
-                } else {
-                    // loglog("RemoteSyslogAppender: gethostbyname returned error");
-                            return; // fail silently
-                }
-            }
-#endif
-            if (pent == NULL) {
-                in_addr_t ip = inet_addr (_relayer.c_str ());
-                pent = gethostbyaddr ((const char *) &ip, sizeof(in_addr_t), AF_INET);
-                    if (pent == NULL) {
-                        // loglog("RemoteSyslogAppender: failed to resolve host %s", _relayer.c_str());
-                        return; // fail silently
-                    }
-            }
-            _ipAddr = *(pent->h_addr);
-        }
-
         // Get a datagram socket.
         int type = SOCK_DGRAM;
 #ifdef LOG4SHIB_HAVE_SOCK_CLOEXEC
@@ -143,39 +107,50 @@ namespace log4shib {
     }
 
     void RemoteSyslogAppender::_append(const LoggingEvent& event) {
-	const std::string message(_getLayout().format(event));
+        const std::string message(_getLayout().format(event));
         int messageLength = message.length();
-	char *buf = new char [messageLength + 16];
+        char *buf = new char [messageLength + 16];
         int priority = _facility + toSyslogPriority(event.priority);
-	int preambleLength = sprintf (buf, "<%d>", priority);
-	memcpy (buf + preambleLength, message.data(), messageLength);
+        int preambleLength = sprintf (buf, "<%d>", priority);
+        memcpy (buf + preambleLength, message.data(), messageLength);
 
-	sockaddr_in sain;
-	sain.sin_family = AF_INET;
-	sain.sin_port   = htons (_portNumber);
-	// NO, do NOT use htonl on _ipAddr. Is already in network order.
-        sain.sin_addr.s_addr = _ipAddr;
+        //convert int to str
+        std::stringstream out;
+        out << _portNumber;
+        std::string port_str = out.str();
 
-	while (messageLength > 0) {
+        const char *addr=_relayer.c_str();
+        const char *port=port_str.c_str();
+
+        //define addrinfo structure
+        struct addrinfo *addrinf;
+        if (getaddrinfo(addr, port, NULL, &addrinf) != 0) {
+            delete[] buf;
+            return;
+        }
+
+        while (messageLength > 0) {
             /* if packet larger than maximum (900 bytes), split
                into two or more syslog packets. */
-	    if (preambleLength + messageLength > 900) {
-    		sendto (_socket, buf, 900, 0, (struct sockaddr *) &sain, sizeof (sain));
+            if (preambleLength + messageLength > 900) {
+                sendto (_socket, buf, 900, 0, addrinf->ai_addr, addrinf->ai_addrlen);
                 messageLength -= (900 - preambleLength);
-		std::memmove (buf + preambleLength, buf + 900, messageLength);
-		// note: we might need to sleep a bit here
-	    } else {
-		sendto (_socket, buf, preambleLength + messageLength, 0, (struct sockaddr *) &sain, sizeof (sain));
-		break;
-	    }
-	}
+                std::memmove (buf + preambleLength, buf + 900, messageLength);
+            // note: we might need to sleep a bit here
+            } else {
+                sendto (_socket, buf, preambleLength + messageLength, 0, addrinf->ai_addr, addrinf->ai_addrlen);
+                break;
+            }
+        }
 
-	delete[] buf;
+        freeaddrinfo(addrinf);
+        delete[] buf;
     }
 
     bool RemoteSyslogAppender::reopen() {
         close();
         open();
         return true;
-    }      
+    }
+
 }
