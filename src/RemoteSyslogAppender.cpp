@@ -74,6 +74,12 @@ namespace log4shib {
     
     RemoteSyslogAppender::~RemoteSyslogAppender() {
         close();
+#ifdef WIN32
+        if (_cludge) {
+            // we started it, we end it.
+            WSACleanup ();
+        }
+#endif
     }
 
     void RemoteSyslogAppender::open() {
@@ -83,15 +89,29 @@ namespace log4shib {
         type |= SOCK_CLOEXEC;
 #endif
         if ((_socket = socket(AF_INET, type, 0)) < 0) {
-            // loglog("RemoteSyslogAppender: failed to open socket");
-            return; // fail silently                    
+#ifdef WIN32
+            if (WSAGetLastError () == WSANOTINITIALISED) {
+                WSADATA wsaData;
+                if (WSAStartup (0x101, &wsaData) != 0) {
+                    return;
+                }
+                _cludge = 1;
+                if ((_socket = socket(AF_INET, type, 0)) < 0) {
+                    return;
+                }
+            } else {
+                return; // fail silently
+            }
+#else
+            return;
+#endif
         }
 #if !defined(LOG4SHIB_HAVE_SOCK_CLOEXEC) && defined(LOG4SHIB_HAVE_FD_CLOEXEC)
-                int fdflags = ::fcntl(_socket, F_GETFD);
-                if (fdflags != -1) {
-                    fdflags |= FD_CLOEXEC;
-                    ::fcntl(_socket, F_SETFD, fdflags);
-                }
+        int fdflags = ::fcntl(_socket, F_GETFD);
+        if (fdflags != -1) {
+            fdflags |= FD_CLOEXEC;
+            ::fcntl(_socket, F_SETFD, fdflags);
+        }
 #endif
     }
 
