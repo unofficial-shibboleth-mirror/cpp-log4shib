@@ -28,3 +28,4 @@
 /log4shib-config
 /libtool
 /*.sed
+/config.log
