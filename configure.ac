@@ -204,14 +204,6 @@ msvc10/testMain/Makefile
 msvc10/testNDC/Makefile
 msvc10/testNTEventLog/Makefile
 msvc10/testPattern/Makefile
-bcb5/Makefile
-bcb5/log4shib/Makefile
-bcb5/testCategory/Makefile
-bcb5/testConfig/Makefile
-bcb5/testFixedContextCategory/Makefile
-bcb5/testmain/Makefile
-bcb5/testNDC/Makefile
-bcb5/testPattern/Makefile
 openvms/Makefile
 ])
 AC_OUTPUT
