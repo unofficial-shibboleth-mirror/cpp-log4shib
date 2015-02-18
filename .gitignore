@@ -18,3 +18,13 @@
 # The contents of the svn:ignore property on the branch root.
 /aclocal.m4
 /autom4te.cache
+/Makefile
+/Makefile.in
+/Portfile
+/configure
+/config.status
+/log4shib.pc
+/log4shib.spec
+/log4shib-config
+/libtool
+/*.sed
