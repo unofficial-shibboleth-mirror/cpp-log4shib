@@ -149,14 +149,12 @@ PETI_PEDANTIC_GCC
 # Create files
 # ----------------------------------------------------------------------------
 
-AC_CONFIG_LIBCONFIG_IN([log4shib])
 AC_CONFIG_PKGCONFIG_IN([log4shib], [C++ library for flexible logging, modeled after Log4j])
 
 AC_CONFIG_FILES([
 Makefile
 log4shib.spec
 log4shib.pc
-log4shib-config
 Portfile
 config/Makefile
 doc/Makefile

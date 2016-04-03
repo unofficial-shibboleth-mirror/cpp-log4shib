@@ -9,18 +9,12 @@ endif
 
 DIST_SUBDIRS = config src include doc tests
 
-bin_SCRIPTS = log4shib-config
-
-m4datadir = $(datadir)/aclocal
-m4data_DATA = log4shib.m4
-
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = log4shib.pc
 
 EXTRA_DIST = \
 	log4shib.spec.in \
 	log4shib.spec \
-	log4shib.m4 \
 	Portfile.in \
 	Portfile \
 	debian \
@@ -30,7 +24,7 @@ EXTRA_DIST = \
 .PHONY: check rpm docs doc-dist
 
 distclean-local:
-	$(RM) CONTENTS TAGS log4shib-config
+	$(RM) CONTENTS TAGS
 
 CONTENTS::
 	find $(top_srcdir) \( ! -type l -a -name '*.cpp' -o -name '*.hh' -o -name Makefile.am \) > $@
