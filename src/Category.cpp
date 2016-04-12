@@ -201,7 +201,7 @@ namespace log4shib {
 
     /* assume lock is held */
     bool Category::ownsAppender(Appender* appender, 
-                                Category::OwnsAppenderMap::iterator& i2) throw() {
+                                OwnsAppenderMap::iterator& i2) throw() {
         bool owned = false;
 
         if (NULL != appender) {
