@@ -2,12 +2,12 @@ AUTOMAKE_OPTIONS = foreign
 ACLOCAL_AMFLAGS = -I m4
 
 if DOC
-SUBDIRS = debian msvc6 msvc8 msvc9 msvc10 config src include tests doc 
+SUBDIRS = config src include tests doc 
 else
-SUBDIRS = debian msvc6 msvc8 msvc9 msvc10 config src include tests
+SUBDIRS = config src include tests
 endif
 
-DIST_SUBDIRS = debian msvc6 msvc8 msvc9 msvc10 openvms config src include doc tests
+DIST_SUBDIRS = config src include doc tests
 
 bin_SCRIPTS = log4shib-config
 
@@ -22,7 +22,13 @@ EXTRA_DIST = \
 	log4shib.spec \
 	log4shib.m4 \
 	Portfile.in \
-	Portfile
+	Portfile \
+	debian \
+	msvc6 \
+	msvc8 \
+	msvc9 \
+	msvc10 \
+	msvc14
 
 .PHONY: check rpm docs doc-dist
 

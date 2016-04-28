@@ -19,6 +19,13 @@
 #define LOG4SHIB_HAVE_INT64_T
 #define int64_t __int64
 
+
+#if defined(_MSC_VER) && _MSC_VER < 1300
+#define LOG4SHIB_MISSING_INT64_OSTREAM_OP
+#endif
+
+#endif
+
 /* define if the compiler has in_addr_t */
 #ifndef LOG4SHIB_HAVE_IN_ADDR_T
 #define LOG4SHIB_HAVE_IN_ADDR_T
@@ -35,11 +42,6 @@ typedef u_long in_addr_t;
 
 #endif
 
-#if defined(_MSC_VER) && _MSC_VER < 1300
-#define LOG4SHIB_MISSING_INT64_OSTREAM_OP
-#endif
-
-#endif
 
 /* Define if you have the <io.h> header file.  */
 #ifndef LOG4SHIB_HAVE_IO_H
@@ -62,7 +64,7 @@ typedef u_long in_addr_t;
 
 /* Version number of package */
 #ifndef LOG4SHIB_VERSION
-#define LOG4SHIB_VERSION  "1.0.9"
+#define LOG4SHIB_VERSION  "1.0.10"
 #endif
 
 /* define if the compiler implements namespaces */
