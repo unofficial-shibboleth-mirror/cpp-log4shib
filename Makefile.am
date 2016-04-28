@@ -34,7 +34,6 @@ EXTRA_DIST = \
 
 dist-hook:
 	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.ds?'`
-	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.bpg'`
 
 distclean-local:
 	$(RM) CONTENTS TAGS log4shib-config
