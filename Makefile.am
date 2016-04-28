@@ -1,4 +1,4 @@
-AUTOMAKE_OPTIONS = foreign
+AUTOMAKE_OPTIONS = foreign dist-zip dist-bzip2
 ACLOCAL_AMFLAGS = -I m4
 
 if DOC
@@ -61,5 +61,5 @@ docs:
 	$(MAKE) -C doc
 
 doc-dist: docs
-	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_srcdir)/doc/html --exclude CVS --exclude .svn .
+	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_srcdir)/doc/html . 
  
