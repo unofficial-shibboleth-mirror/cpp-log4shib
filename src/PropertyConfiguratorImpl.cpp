@@ -337,14 +337,21 @@ namespace log4shib {
         categories.clear();
 
         // add the root category first
+        std::set<std::string> contents;
         categories.push_back(std::string("rootCategory"));
+        contents.insert(std::string("rootCategory"));
 
         // then look for "category."
         std::string prefix("category");
         Properties::const_iterator from = _properties.lower_bound(prefix + '.');
         Properties::const_iterator to = _properties.lower_bound(prefix + (char)('.' + 1)); 
         for (Properties::const_iterator iter = from; iter != to; iter++) {
-            categories.push_back((*iter).first.substr(prefix.size() + 1));
+            std::string what((*iter).first.substr(prefix.size() + 1));
+            bool is_in = (contents.find(what) != contents.end());
+            if ("" != what && !is_in) {
+                categories.push_back(what);
+                contents.insert(what);
+            }
         }
     }
 }
