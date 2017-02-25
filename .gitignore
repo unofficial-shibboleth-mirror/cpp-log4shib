@@ -51,3 +51,7 @@ Release
 *.tar.bz2
 *.tar.gz
 *.zip
+**/Makefile.am
+*.suo
+*.vcxproj.user
+msvc14/msvc14.VC*
