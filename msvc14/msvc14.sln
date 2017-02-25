@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "log4shib", "log4shib\log4shib.vcxproj", "{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -20,6 +20,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testNTEventLog", "testNTEventLog\testNTEventLog.vcxproj", "{168660E9-5AE5-4AAC-8417-CF32F62D2329}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testPattern", "testPattern\testPattern.vcxproj", "{7ADF954B-8E61-4636-B43B-9C50419AB003}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sscpp706", "sscpp706\sscpp706.VCXPROJ", "{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,14 @@ Global
 		{7ADF954B-8E61-4636-B43B-9C50419AB003}.Release|Win32.Build.0 = Release|Win32
 		{7ADF954B-8E61-4636-B43B-9C50419AB003}.Release|x64.ActiveCfg = Release|x64
 		{7ADF954B-8E61-4636-B43B-9C50419AB003}.Release|x64.Build.0 = Release|x64
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Debug|Win32.Build.0 = Debug|Win32
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Debug|x64.ActiveCfg = Debug|x64
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Debug|x64.Build.0 = Debug|x64
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Release|Win32.ActiveCfg = Release|Win32
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Release|Win32.Build.0 = Release|Win32
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Release|x64.ActiveCfg = Release|x64
+		{1DEF60F3-277E-4730-8EBF-A3EA58AD096F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
