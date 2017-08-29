@@ -54,4 +54,5 @@ Release
 **/Makefile.am
 *.suo
 *.vcxproj.user
-msvc14/msvc14.VC*
+*.vc.db
+msvc??/msvc??.VC*
