@@ -38,13 +38,9 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Debug|Win32.Build.0 = Debug|Win32
 		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Debug|x64.ActiveCfg = Debug|x64
-		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Debug|x64.Build.0 = Debug|x64
 		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Release|Win32.ActiveCfg = Release|Win32
-		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Release|Win32.Build.0 = Release|Win32
 		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Release|x64.ActiveCfg = Release|x64
-		{E165FFCB-F8FD-48E0-BBF3-0838CC7941F5}.Release|x64.Build.0 = Release|x64
 		{694666C6-3646-4253-A4C7-9EAEBC96FF21}.Debug|Win32.ActiveCfg = Debug|Win32
 		{694666C6-3646-4253-A4C7-9EAEBC96FF21}.Debug|Win32.Build.0 = Debug|Win32
 		{694666C6-3646-4253-A4C7-9EAEBC96FF21}.Debug|x64.ActiveCfg = Debug|x64
@@ -112,5 +108,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A15D2625-1C07-41AF-B6E4-27B72065084C}
 	EndGlobalSection
 EndGlobal
