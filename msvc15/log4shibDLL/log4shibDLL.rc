@@ -10,8 +10,8 @@
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,10,0
- PRODUCTVERSION 1,0,10,0
+ FILEVERSION 1,0,10,1
+ PRODUCTVERSION 1,0,10,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -32,7 +32,7 @@ BEGIN
             VALUE "FileDescription", "Log library for C++ DLL\0"
             VALUE "FileVersion", "1.0.10\0"
             VALUE "InternalName", "log4shib\0"
-            VALUE "LegalCopyright", "Copyright © 2000-2016 the Log4cpp Project, others\0"
+            VALUE "LegalCopyright", "Copyright Â© 2000-2016 the Log4cpp Project, others\0"
             VALUE "LegalTrademarks", "\0"
 #ifdef _DEBUG
             VALUE "OriginalFilename", "log4shib1_0D.dll\0"
