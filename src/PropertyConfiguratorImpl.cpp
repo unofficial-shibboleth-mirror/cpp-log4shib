@@ -171,6 +171,11 @@ namespace log4shib {
         bool additive = _properties.getBool("additivity." + categoryName, true);
         category.setAdditivity(additive);
 
+        // Hack to assign ownership of related Appenders to this Category
+        // Defaults to true for rootCategory, false otherwise.
+        bool ownAppenders = _properties.getBool("ownAppenders." + categoryName,
+            categoryName == "rootCategory");
+
         category.removeAllAppenders();
         for(/**/; i != iEnd; ++i) {           
             std::string appenderName = StringUtil::trim(*i);
@@ -180,7 +185,7 @@ namespace log4shib {
                 // appender not found;
                 throw ConfigureFailure(std::string("Appender '") +
                     appenderName + "' not found for category '" + categoryName + "'");
-            } else if (categoryName == "rootCategory") {
+            } else if (ownAppenders) {
 
                 /* pass by pointer, i.e. transfer ownership */
                 category.addAppender((*appIt).second);
