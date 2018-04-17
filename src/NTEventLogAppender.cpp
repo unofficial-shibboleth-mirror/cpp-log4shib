@@ -23,7 +23,9 @@ namespace log4shib {
 
     void NTEventLogAppender::open()
     {
-        addRegistryInfo(_strSourceName.c_str());
+        // This has to be done as Admin and should really be app-specific and
+        // handled as part of installation or by a deployer.
+        //addRegistryInfo(_strSourceName.c_str());
         _hEventSource = ::RegisterEventSource(NULL, _strSourceName.c_str());
     }
 
@@ -52,10 +54,9 @@ namespace log4shib {
         const char* ps[1];
         ps[0] = event.message.c_str();
 
-        const DWORD messageID = 0x1000;
         ::ReportEvent(_hEventSource, getType(event.priority), 
 	          getCategory(event.priority), 
-	          messageID, NULL, 1, 0, ps, NULL);
+              0x20001000L, NULL, 1, 0, ps, NULL);
     }
 
     /**
@@ -119,14 +120,15 @@ namespace log4shib {
      * Add this source with appropriate configuration keys to the registry.
      */
     void NTEventLogAppender::addRegistryInfo(const char *source) {
-        const TCHAR *prefix = "SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\";
-        DWORD disposition;
-        HKEY hkey = 0;
-        TCHAR subkey[256];
+        static const TCHAR *prefix = "SYSTEM\\CurrentControlSet\\Services\\EventLog\\Application\\";
 
+        TCHAR* subkey = new TCHAR[lstrlen(prefix) + lstrlen(source) + 1];
         lstrcpy(subkey, prefix);
         lstrcat(subkey, source);
-        hkey = regGetKey(subkey, &disposition);
+        DWORD disposition;
+        HKEY hkey = regGetKey(subkey, &disposition);
+        delete[] subkey;
+
         if (disposition == REG_CREATED_NEW_KEY) {
             regSetString(hkey, "EventMessageFile", "NTEventLogAppender.dll");
             regSetString(hkey, "CategoryMessageFile", "NTEventLogAppender.dll");

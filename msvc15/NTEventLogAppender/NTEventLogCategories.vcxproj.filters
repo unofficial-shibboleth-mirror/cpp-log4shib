@@ -20,7 +20,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="\NTEventLogCategories.rc">
+    <ResourceCompile Include="$(IntDir)\NTEventLogCategories.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

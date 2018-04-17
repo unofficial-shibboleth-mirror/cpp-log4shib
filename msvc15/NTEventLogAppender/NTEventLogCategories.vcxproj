@@ -137,13 +137,13 @@
     <CustomBuild Include="NTEventLogCategories.mc">
       <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">if not exist $(IntDir) md $(IntDir)
-mc.exe -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
+mc.exe -c -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">if not exist $(IntDir) md $(IntDir)
-mc.exe -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
+mc.exe -c -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">if not exist $(IntDir) md $(IntDir)
-mc.exe -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
+mc.exe -c -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">if not exist $(IntDir) md $(IntDir)
-mc.exe -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
+mc.exe -c -h $(IntDir) -r $(IntDir) $(ProjectDir)%(Filename).mc</Command>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename).rc</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename).rc</Outputs>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)%(Filename).rc</Outputs>
