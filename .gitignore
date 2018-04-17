@@ -42,8 +42,6 @@ Makefile.in
 /tests/testbench
 /tests/testmain
 .deps
-Debug
-Release
 *.sdf
 *.vs
 *.ncb
@@ -56,3 +54,6 @@ Release
 *.vcxproj.user
 *.vc.db
 msvc??/msvc??.VC*
+Debug
+Release
+x64
