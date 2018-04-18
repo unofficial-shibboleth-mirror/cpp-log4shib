@@ -56,7 +56,7 @@ namespace log4shib {
 
         ::ReportEvent(_hEventSource, getType(event.priority), 
 	          getCategory(event.priority), 
-              0x20001000L, NULL, 1, 0, ps, NULL);
+              0x00001000L, NULL, 1, 0, ps, NULL);
     }
 
     /**
