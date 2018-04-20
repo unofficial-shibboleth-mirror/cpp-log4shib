@@ -9,7 +9,7 @@
 namespace log4shib {
 
     NTEventLogAppender::NTEventLogAppender(const std::string& name, const std::string& sourceName) :
-    AppenderSkeleton(name),
+    LayoutAppender(name),
     _strSourceName(sourceName),
     _hEventSource(NULL)
     {
@@ -42,17 +42,11 @@ namespace log4shib {
         return true;
     }      
 
-    bool NTEventLogAppender::requiresLayout() const {
-        return false;
-    }
-
-    void NTEventLogAppender::setLayout(Layout* layout) {
-        return;
-    }
-
     void NTEventLogAppender::_append(const LoggingEvent& event) {
+        std::string message(_getLayout().format(event));
+
         const char* ps[1];
-        ps[0] = event.message.c_str();
+        ps[0] = message.c_str();
 
         ::ReportEvent(_hEventSource, getType(event.priority), 
 	          getCategory(event.priority), 

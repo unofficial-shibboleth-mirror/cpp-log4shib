@@ -36,7 +36,7 @@
 #endif // done dealing with ERROR #define
 
 #include <log4shib/Portability.hh>
-#include <log4shib/AppenderSkeleton.hh>
+#include <log4shib/LayoutAppender.hh>
 
 namespace log4shib {
 
@@ -49,7 +49,7 @@ namespace log4shib {
      * correctly in Event Viewer.<BR>
      * <B>NB:</B> This class is only available on Win32 platforms.
      **/
-    class LOG4SHIB_EXPORT NTEventLogAppender : public AppenderSkeleton {
+    class LOG4SHIB_EXPORT NTEventLogAppender : public LayoutAppender {
     public:
 
         /**
@@ -66,14 +66,6 @@ namespace log4shib {
         virtual bool reopen();
 
         virtual void close();
-
-        /**
-         * The NTEventLogAppender does its own Layout.
-         * @returns false
-         **/
-        virtual bool requiresLayout() const;
-
-        virtual void setLayout(Layout* layout);
 
     protected:
         
