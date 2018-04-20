@@ -227,7 +227,7 @@ namespace log4shib {
             appender = new RollingFileAppender(appenderName, fileName, maxFileSize, maxBackupIndex,
                 append);
         }
-        else if (appenderType == "SyslogAppender") {
+        else if (appenderType == "SyslogAppender" || appenderType == "RemoteSyslogAppender") {
             std::string syslogName = _properties.getString(appenderPrefix + ".syslogName", "syslog");
             std::string syslogHost = _properties.getString(appenderPrefix + ".syslogHost", "localhost");
             int facility = _properties.getInt(appenderPrefix + ".facility", -1) * 8; // * 8 to get LOG_KERN, etc. compatible values. 
