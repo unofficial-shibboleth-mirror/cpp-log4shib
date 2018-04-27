@@ -24,11 +24,8 @@ EXTRA_DIST = \
 	Portfile.in \
 	Portfile \
 	debian \
-	msvc6 \
-	msvc8 \
-	msvc9 \
 	msvc10 \
-	msvc14
+	msvc15
 
 .PHONY: check rpm docs doc-dist
 
