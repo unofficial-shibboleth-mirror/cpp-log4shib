@@ -29,9 +29,6 @@ EXTRA_DIST = \
 
 .PHONY: check rpm docs doc-dist
 
-dist-hook:
-	perl -pi -e 's/\n/\r\n/g' `find $(distdir) -name '*.ds?'`
-
 distclean-local:
 	$(RM) CONTENTS TAGS log4shib-config
 
