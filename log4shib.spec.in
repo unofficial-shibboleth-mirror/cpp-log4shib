@@ -6,7 +6,7 @@ License:    LGPL
 Group:      Development/Libraries
 Vendor:     Shibboleth Consortium
 URL:        http://shibboleth.net/downloads/@PACKAGE_NAME@/@PACKAGE_VERSION@
-Source:     %name-%version.tar.gz
+Source:     %name-%version.tar.bz2
 BuildRoot:  %_tmppath/%name-%version-root
 BuildRequires:  gcc-c++
 %{!?_without_doxygenrpm:BuildRequires: doxygen}
@@ -97,6 +97,9 @@ fi
 %doc %{pkgdocdir}
 
 %changelog
+* Tue May 1 2018 Scott Cantor <cantor.2@osu.edu> - 1.0.10-1
+- Switch to bzipped source
+
 * Thu May 23 2013  Scott Cantor  <cantor.2@osu.edu>  - 1.0.6-1
 - Patch to limit file handle leakage from prop-based configs
 
