@@ -2,10 +2,8 @@
 //
 
 #include "log4shib/Portability.hh"
+#include "log4shib/NTEventLogAppender.hh"
 
-#ifdef WIN32
-#include <windows.h>
-#endif
 #ifdef LOG4SHIB_HAVE_UNISTD_H
 #include <unistd.h>
 #endif
