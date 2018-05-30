@@ -5,10 +5,7 @@
 
 int main(int argc, char* argv[])
 {
-    if (argc < 2)
-        return 1;
-
-    std::string initFileName = argv[1];
+    std::string initFileName = argc > 1 ? argv[1] : "sscpp706.txt";
     try {
         log4shib::PropertyConfigurator::configure(initFileName);
         log4shib::Category& root = log4shib::Category::getRoot();
@@ -21,3 +18,4 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
