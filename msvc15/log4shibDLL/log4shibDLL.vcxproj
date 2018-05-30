@@ -106,7 +106,6 @@
       <PreprocessorDefinitions>LOG4SHIB_HAVE_INT64_T;_DEBUG;WIN32;_WINDOWS;_USRDLL;LOG4SHIB_HAS_DLL;LOG4SHIB_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BrowseInformation>true</BrowseInformation>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ConformanceMode>true</ConformanceMode>
@@ -142,7 +141,6 @@
       <PreprocessorDefinitions>LOG4SHIB_HAVE_INT64_T;_DEBUG;WIN32;_WINDOWS;_USRDLL;LOG4SHIB_HAS_DLL;LOG4SHIB_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <BrowseInformation>true</BrowseInformation>
-      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <ConformanceMode>true</ConformanceMode>
