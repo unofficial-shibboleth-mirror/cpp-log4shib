@@ -1,18 +1,21 @@
 TESTS = testCategory testFixedContextCategory testNDC testPattern \
 	testErrorCollision testPriority testFilter testProperties \
-	testConfig testPropertyConfig
+	testConfig testPropertyConfig sscpp706
 
 check_PROGRAMS = $(TESTS)
 check_DATA = log4shib.init log4shib.properties testProperties.properties \
-	testConfig.log4shib.properties
+	testConfig.log4shib.properties sscpp706.txt
 
 EXTRA_DIST = log4shib.init log4shib.properties testProperties.properties \
-	testConfig.log4shib.properties \
+	testConfig.log4shib.properties sscpp706.txt \
 	testNTEventLog.cpp
 
-noinst_PROGRAMS = testmain testbench
+noinst_PROGRAMS = testmain testbench sscpp706
 
 AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/src
+
+sscpp706_SOURCES = sscpp706.cpp
+sscpp706_LDADD = $(top_builddir)/src/liblog4shib.la
 
 testmain_SOURCES = testmain.cpp
 testmain_LDADD = $(top_builddir)/src/liblog4shib.la
