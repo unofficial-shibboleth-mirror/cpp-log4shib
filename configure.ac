@@ -102,8 +102,8 @@ AC_CHECK_FUNCS([syslog gettimeofday ftime localtime_r gmtime_r])
 # ----------------------------------------------------------------------------
 
 # for RemoteSyslogAppender
-AC_CHECK_LIB(socket,socket, LIBS="-lsocket $LIBS",,)
-AC_CHECK_LIB(nsl,gethostbyname, LIBS="-lnsl $LIBS",,)
+AC_SEARCH_LIBS([socket],[socket],,[AC_MSG_ERROR([cannot find socket() function])])
+AC_SEARCH_LIBS([gethostbyname],[nsl],,[AC_MSG_ERROR([cannot find gethostbyname() function])])
 
 # checks for pthreads
 AX_PTHREAD([enable_threads="pthread"],[enable_threads="no"])
@@ -140,7 +140,6 @@ BB_ENABLE_DOXYGEN
 #BB_CHECK_OMNITHREADS
 #BB_CHECK_PTHREADS
 
-LOG4SHIB_CFLAGS="$CXXFLAGS"
 LOG4SHIB_LIBS="-llog4shib"
 LOG4SHIB_LIBDEPS="$LIBS"
 LOG4SHIB_VERSION="$VERSION"

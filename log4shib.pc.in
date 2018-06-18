@@ -7,4 +7,4 @@ Name: @PACKAGE@
 Description: C++ library for flexible logging, modeled after Log4j
 Version: @VERSION@
 Libs: -L${libdir} @log4shib_libs@
-Cflags: -I${includedir} @log4shib_cflags@
+Cflags: -I${includedir}
