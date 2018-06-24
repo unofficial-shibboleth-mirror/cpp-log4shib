@@ -1,13 +1,10 @@
 AUTOMAKE_OPTIONS = foreign dist-zip dist-bzip2
 ACLOCAL_AMFLAGS = -I m4
 
-if DOC
-SUBDIRS = config src include tests doc 
-else
 SUBDIRS = config src include tests
+if DOC
+SUBDIRS += doc
 endif
-
-DIST_SUBDIRS = config src include doc tests
 
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = log4shib.pc
