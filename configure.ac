@@ -136,10 +136,6 @@ fi
 # ----------------------------------------------------------------------------
 BB_ENABLE_DOXYGEN
 
-# check for omnithreads
-#BB_CHECK_OMNITHREADS
-#BB_CHECK_PTHREADS
-
 PETI_PEDANTIC_GCC
 
 # Create files
