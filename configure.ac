@@ -140,16 +140,10 @@ BB_ENABLE_DOXYGEN
 #BB_CHECK_OMNITHREADS
 #BB_CHECK_PTHREADS
 
-LOG4SHIB_LIBS="-llog4shib"
-LOG4SHIB_LIBDEPS="$LIBS"
-LOG4SHIB_VERSION="$VERSION"
-
 PETI_PEDANTIC_GCC
 
 # Create files
 # ----------------------------------------------------------------------------
-
-AC_CONFIG_PKGCONFIG_IN([log4shib], [C++ library for flexible logging, modeled after Log4j])
 
 AC_CONFIG_FILES([
 Makefile
