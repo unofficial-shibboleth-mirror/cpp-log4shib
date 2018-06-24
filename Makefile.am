@@ -39,3 +39,5 @@ docs:
 doc-dist: docs
 	tar -zcf $(PACKAGE)-docs-$(VERSION).tar.gz -C $(top_srcdir)/doc/html . 
  
+# Left behind by AX_PREFIX_CONFIG_H
+DISTCLEANFILES = _configs.sed
