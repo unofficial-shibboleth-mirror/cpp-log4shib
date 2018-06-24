@@ -23,15 +23,6 @@ EXTRA_DIST = \
 
 .PHONY: check rpm docs doc-dist
 
-distclean-local:
-	$(RM) CONTENTS TAGS
-
-CONTENTS::
-	find $(top_srcdir) \( ! -type l -a -name '*.cpp' -o -name '*.hh' -o -name Makefile.am \) > $@
-
-TAGS:: CONTENTS
-	etags `cat $<`
-
 rpm: dist
 	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz
 	mv -f /usr/src/redhat/SRPMS/$(PACKAGE)-$(VERSION)-*.rpm $(top_srcdir)
