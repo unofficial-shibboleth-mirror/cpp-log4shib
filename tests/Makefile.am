@@ -12,6 +12,7 @@ AM_CPPFLAGS = -I$(top_srcdir)/include -I$(top_srcdir)/src
 LDADD = ../src/liblog4shib.la
 AM_DEFAULT_SOURCE_EXT = .cpp
 
+sscpp706_CPPFLAGS = $(AM_CPPFLAGS) -DDATADIR=\"$(srcdir)\"
 
 testbench_SOURCES = Clock.cpp Clock.hh testbench.cpp 
 
