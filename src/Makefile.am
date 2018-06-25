@@ -49,3 +49,4 @@ liblog4shib_la_SOURCES = \
 	AbortAppender.cpp
 
 liblog4shib_la_LDFLAGS = -version-info @LT_VERSION@
+liblog4shib_la_LIBADD = $(PTHREAD_LIBS)

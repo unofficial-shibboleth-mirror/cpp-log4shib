@@ -106,7 +106,6 @@ else
     AC_DEFINE(HAVE_THREADING,1,[define if threading is enabled])
     AC_DEFINE(USE_PTHREADS,1,[define if pthread library is available])
     AC_DEFINE(_PTHREADS,1,[define for STL if pthread library is used])
-    LIBS="$PTHREAD_LIBS $LIBS"
     AM_CFLAGS="$PTHREAD_CFLAGS $AM_CFLAGS"
     AM_CXXFLAGS="$PTHREAD_CFLAGS $AM_CXXFLAGS"
     CC="$PTHREAD_CC"
