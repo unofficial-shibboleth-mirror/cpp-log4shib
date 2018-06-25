@@ -133,7 +133,6 @@ Makefile
 log4shib.spec
 log4shib.pc
 Portfile
-config/Makefile
 doc/Makefile
 doc/Doxyfile
 doc/html/Makefile

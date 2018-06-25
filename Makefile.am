@@ -1,7 +1,7 @@
 AUTOMAKE_OPTIONS = foreign dist-zip dist-bzip2
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = config src include tests
+SUBDIRS = src include tests
 if DOC
 SUBDIRS += doc
 endif
