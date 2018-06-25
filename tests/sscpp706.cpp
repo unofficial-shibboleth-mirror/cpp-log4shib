@@ -3,6 +3,10 @@
 #include <log4shib/Category.hh>
 #include <log4shib/PropertyConfigurator.hh>
 
+#ifdef WIN32
+# define DATADIR "."
+#endif
+
 int main(int argc, char* argv[])
 {
     std::string initFileName = argc > 1 ? argv[1] : DATADIR "/sscpp706.txt";
