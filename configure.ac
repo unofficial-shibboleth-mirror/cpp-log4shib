@@ -53,14 +53,6 @@ if test "$GCC" = "yes" ; then
     CXXFLAGS="-Wall $GCC_CXXFLAGS"
 fi
 
-# Enables POSIX semantics for some functions.
-case "${host_cpu}-${host_os}" in
-    *solaris*)
-        CFLAGS="$CFLAGS -D_POSIX_PTHREAD_SEMANTICS"
-        CXXFLAGS="$CXXFLAGS -D_POSIX_PTHREAD_SEMANTICS"
-    ;;
-esac
-
 AC_PROG_CXXCPP
 AC_LANG(C)
 
