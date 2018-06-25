@@ -35,11 +35,11 @@ AC_ARG_ENABLE(debug,
     enable_debug=$enableval, enable_debug=no)
 
 if test "$enable_debug" = "yes" ; then
-    GCC_CFLAGS="$CFLAGS -g -D_DEBUG"
-    GCC_CXXFLAGS="$CXXFLAGS -g -D_DEBUG"
+    AM_CFLAGS="-g -D_DEBUG"
+    AM_CXXFLAGS="-g -D_DEBUG"
 else
-    GCC_CFLAGS="$CFLAGS -O2 -DNDEBUG"
-    GCC_CXXFLAGS="$CXXFLAGS -O2 -DNDEBUG"
+    AM_CFLAGS="-O2 -DNDEBUG"
+    AM_CXXFLAGS="-O2 -DNDEBUG"
 fi
 
 AM_PROG_LIBTOOL
@@ -49,8 +49,8 @@ AC_PROG_MAKE_SET
 AC_PROG_CXX([g++ c++ gpp aCC CC cxx cc++ cl FCC KCC RCC xlC_r xlC QCC])
 
 if test "$GCC" = "yes" ; then
-    CFLAGS="-Wall $GCC_CFLAGS"
-    CXXFLAGS="-Wall $GCC_CXXFLAGS"
+    AM_CFLAGS="$AM_CFLAGS -Wall -W"
+    AM_CXXFLAGS="$AM_CXXFLAGS -Wall -W"
 fi
 
 AC_PROG_CXXCPP
@@ -107,10 +107,13 @@ else
     AC_DEFINE(USE_PTHREADS,1,[define if pthread library is available])
     AC_DEFINE(_PTHREADS,1,[define for STL if pthread library is used])
     LIBS="$PTHREAD_LIBS $LIBS"
-    CFLAGS="$PTHREAD_CFLAGS $CFLAGS"
-    CXXFLAGS="$PTHREAD_CFLAGS $CXXFLAGS"
+    AM_CFLAGS="$PTHREAD_CFLAGS $AM_CFLAGS"
+    AM_CXXFLAGS="$PTHREAD_CFLAGS $AM_CXXFLAGS"
     CC="$PTHREAD_CC"
 fi
+
+AC_SUBST([AM_CFLAGS])
+AC_SUBST([AM_CXXFLAGS])
 
 AC_LANG(C++)
 
@@ -127,8 +130,6 @@ fi
 # check for doxygen
 # ----------------------------------------------------------------------------
 BB_ENABLE_DOXYGEN
-
-PETI_PEDANTIC_GCC
 
 # Create files
 # ----------------------------------------------------------------------------
