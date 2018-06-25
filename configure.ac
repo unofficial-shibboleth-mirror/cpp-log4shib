@@ -97,19 +97,14 @@ AC_CHECK_FUNCS([syslog gettimeofday ftime localtime_r gmtime_r])
 AC_SEARCH_LIBS([socket],[socket],,[AC_MSG_ERROR([cannot find socket() function])])
 AC_SEARCH_LIBS([gethostbyname],[nsl],,[AC_MSG_ERROR([cannot find gethostbyname() function])])
 
-# checks for pthreads
-AX_PTHREAD([enable_threads="pthread"],[enable_threads="no"])
-if test $enable_threads != "pthread"; then
-    AC_MSG_ERROR([unable to find pthreads, currently this is required])
-else
-    AC_DEFINE(HAVE_PTHREAD,1,[Define if you have POSIX threads libraries and header files.])
-    AC_DEFINE(HAVE_THREADING,1,[define if threading is enabled])
+AX_PTHREAD(
+   [AC_DEFINE(HAVE_THREADING,1,[define if threading is enabled])
     AC_DEFINE(USE_PTHREADS,1,[define if pthread library is available])
     AC_DEFINE(_PTHREADS,1,[define for STL if pthread library is used])
     AM_CFLAGS="$PTHREAD_CFLAGS $AM_CFLAGS"
     AM_CXXFLAGS="$PTHREAD_CFLAGS $AM_CXXFLAGS"
-    CC="$PTHREAD_CC"
-fi
+    CC="$PTHREAD_CC"],
+   [AC_MSG_ERROR([unable to find pthreads, currently this is required])])
 
 AC_SUBST([AM_CFLAGS])
 AC_SUBST([AM_CXXFLAGS])
