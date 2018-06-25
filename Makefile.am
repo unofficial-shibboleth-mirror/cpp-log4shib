@@ -14,7 +14,6 @@ EXTRA_DIST = \
 	log4shib.spec \
 	Portfile.in \
 	Portfile \
-	debian \
 	msvc10 \
 	msvc15
 
@@ -28,10 +27,6 @@ rpm: dist
 		$(top_srcdir)
 	mv -f /usr/src/redhat/RPMS/*/$(PACKAGE)-doc-$(VERSION)-*.rpm \
 		$(top_srcdir)
-
-debian:
-	chmod a+x $(top_srcdir)/debian/rules
-	dpkg-buildpackage -rfakeroot -sa -us -uc -tc 
 
 docs:
 	$(MAKE) -C doc
