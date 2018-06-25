@@ -85,10 +85,10 @@
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|x64'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">log4shib1_0D</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">log4shib1_0D</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">log4shib1_0</TargetName>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">log4shib1_0</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">log4shib2_0D</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">log4shib2_0D</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">log4shib2_0</TargetName>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">log4shib2_0</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -120,7 +120,7 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>$(TargetDir)log4shib1D.lib</ImportLibrary>
+      <ImportLibrary>$(TargetDir)log4shib2D.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake />
@@ -155,7 +155,7 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>$(TargetDir)log4shib1D.lib</ImportLibrary>
+      <ImportLibrary>$(TargetDir)log4shib2D.lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <Bscmake />
@@ -186,7 +186,7 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>$(TargetDir)log4shib1.lib</ImportLibrary>
+      <ImportLibrary>$(TargetDir)log4shib2.lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake />
@@ -217,7 +217,7 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
-      <ImportLibrary>$(TargetDir)log4shib1.lib</ImportLibrary>
+      <ImportLibrary>$(TargetDir)log4shib2.lib</ImportLibrary>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <Bscmake />

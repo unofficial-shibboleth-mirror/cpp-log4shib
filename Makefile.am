@@ -14,7 +14,6 @@ EXTRA_DIST = \
 	log4shib.spec \
 	Portfile.in \
 	Portfile \
-	msvc10 \
 	msvc15
 
 .PHONY: check rpm docs doc-dist

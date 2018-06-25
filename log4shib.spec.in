@@ -25,13 +25,13 @@ Log for C++ is a library of classes for flexible logging to files, syslog,
 and other destinations. It is modeled after the Log for Java library and
 stays as close to its API as is reasonable.
 
-%package -n lib@PACKAGE_NAME@1
+%package -n lib@PACKAGE_NAME@2
 Summary:    Log for C++, Shibboleth Edition
 Group:      Development/Libraries
 Provides:   @PACKAGE_NAME@ = %{version}-%{release}
 Obsoletes:  @PACKAGE_NAME@ < %{version}-%{release}
 
-%description -n lib@PACKAGE_NAME@1
+%description -n lib@PACKAGE_NAME@2
 Log for C++ is a library of classes for flexible logging to files, syslog,
 and other destinations. It is modeled after the Log for Java library and
 stays as close to its API as is reasonable.
@@ -97,7 +97,8 @@ fi
 %doc %{pkgdocdir}
 
 %changelog
-* Tue May 1 2018 Scott Cantor <cantor.2@osu.edu> - 1.0.10-1
+* Mon Jun 25 2018 Scott Cantor <cantor.2@osu.edu> - 2.0.0-1
+- Bump version
 - Switch to bzipped source
 
 * Thu May 23 2013  Scott Cantor  <cantor.2@osu.edu>  - 1.0.6-1
