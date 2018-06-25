@@ -128,7 +128,9 @@ namespace log4shib {
         int _socket;
         in_addr_t _ipAddr;
         private:
+#ifdef WIN32
         int _cludge;
+#endif
     };
 }
 

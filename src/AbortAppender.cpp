@@ -25,7 +25,7 @@ namespace log4shib {
         // empty
     }
 
-    void AbortAppender::_append(const LoggingEvent& event) {
+    void AbortAppender::_append(const LoggingEvent&) {
         std::abort();
     }
 
@@ -37,7 +37,7 @@ namespace log4shib {
         return false;
     }
 
-    void AbortAppender::setLayout(Layout* layout) {
+    void AbortAppender::setLayout(Layout*) {
         return;
     }
 }

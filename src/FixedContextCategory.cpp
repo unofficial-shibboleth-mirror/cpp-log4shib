@@ -44,11 +44,11 @@ namespace log4shib {
         return result;
     }
     
-    void FixedContextCategory::addAppender(Appender* appender) throw() {
+    void FixedContextCategory::addAppender(Appender*) throw() {
         // XXX do nothing for now
     }
     
-    void FixedContextCategory::addAppender(Appender& appender) {
+    void FixedContextCategory::addAppender(Appender&) {
         // XXX do nothing for now
     }
     
@@ -68,12 +68,8 @@ namespace log4shib {
     void FixedContextCategory::removeAllAppenders() {
         // XXX do nothing for now
     }
-
-    bool FixedContextCategory::ownsAppender() const throw() {
-        return false;
-    }
     
-    bool FixedContextCategory::ownsAppender(Appender* appender) const throw() {
+    bool FixedContextCategory::ownsAppender(Appender*) const throw() {
         return false;
     }
     
@@ -82,7 +78,7 @@ namespace log4shib {
         _delegate.callAppenders(event);
     }
 
-    void FixedContextCategory::setAdditivity(bool additivity) {
+    void FixedContextCategory::setAdditivity(bool) {
         // XXX do nothing for now
     }
 

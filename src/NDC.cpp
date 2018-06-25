@@ -113,7 +113,7 @@ namespace log4shib {
         }
     }
 
-    void NDC::_setMaxDepth(int maxDepth) {
+    void NDC::_setMaxDepth(int) {
         // XXX no maximum
     }
 

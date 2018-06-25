@@ -55,7 +55,7 @@ namespace log4shib {
             _literal(literal) {
         }
 
-        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent&) {
             out << _literal;
         }
 
@@ -123,7 +123,7 @@ namespace log4shib {
     };
 
     struct ProcessorTimeComponent : public PatternLayout::PatternComponent {
-        virtual void append(std::ostringstream& out, const LoggingEvent& event) {
+        virtual void append(std::ostringstream& out, const LoggingEvent&) {
             out << ::clock();
         }
     };

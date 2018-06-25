@@ -116,12 +116,6 @@ namespace log4shib {
          * FixedContextAppenders cannot own Appenders.
          * @returns false
          **/
-        virtual bool ownsAppender() const throw();
-
-        /**
-         * FixedContextAppenders cannot own Appenders.
-         * @returns false
-         **/
         virtual bool ownsAppender(Appender* appender)
             const throw();
 

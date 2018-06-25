@@ -66,8 +66,10 @@ namespace log4shib {
         _facility((facility == -1) ? LOG_USER : facility),
         _portNumber((portNumber == -1) ? 514 : portNumber),
         _socket (0),
-        _ipAddr (0),
-        _cludge (0)
+        _ipAddr (0)
+#ifdef WIN32
+        ,_cludge (0)
+#endif
     {
         open();
     }
