@@ -41,7 +41,7 @@ This package contains just the shared library.
 %package -n lib@PACKAGE_NAME@-devel
 Summary: Development tools for Log for C++
 Group: Development/Libraries
-Requires:   lib@PACKAGE_NAME@1 = %{version}-%{release}
+Requires:   lib@PACKAGE_NAME@2 = %{version}-%{release}
 Provides:	@PACKAGE_NAME@-devel = %{version}-%{release}
 Obsoletes:  @PACKAGE_NAME@-devel < %{version}-%{release}
 
