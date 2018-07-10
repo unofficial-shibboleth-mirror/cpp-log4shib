@@ -67,7 +67,7 @@ config/install-sh -m 644 -c AUTHORS COPYING INSTALL NEWS README THANKS ChangeLog
 [ "$RPM_BUILD_ROOT" != "/" ] && %{__rm} -rf $RPM_BUILD_ROOT
 
 %ifnos solaris2.8 solaris2.9 solaris2.10
-%post -n lib@PACKAGE_NAME@1 -p /sbin/ldconfig
+%post -n lib@PACKAGE_NAME@2 -p /sbin/ldconfig
 %endif
 
 %post -n lib@PACKAGE_NAME@-devel
