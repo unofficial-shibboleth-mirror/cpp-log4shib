@@ -42,7 +42,7 @@ else
     AM_CXXFLAGS="-O2 -DNDEBUG"
 fi
 
-AM_PROG_LIBTOOL
+LT_INIT([disable-static])
 AC_PROG_INSTALL
 AC_PROG_MAKE_SET
 
