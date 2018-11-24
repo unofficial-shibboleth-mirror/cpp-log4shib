@@ -31,15 +31,12 @@ AC_ARG_WITH(idsa, AS_HELP_STRING(--with-idsa, [include idsa support]),)
 AC_CANONICAL_HOST
 
 AC_ARG_ENABLE(debug,
-    AS_HELP_STRING(--enable-debug, [Have GCC compile with symbols (Default = no)]),
+    AS_HELP_STRING(--enable-debug, [Produce debug variant (Default = no)]),
     enable_debug=$enableval, enable_debug=no)
 
 if test "$enable_debug" = "yes" ; then
-    AM_CFLAGS="-g -D_DEBUG"
-    AM_CXXFLAGS="-g -D_DEBUG"
-else
-    AM_CFLAGS="-O2 -DNDEBUG"
-    AM_CXXFLAGS="-O2 -DNDEBUG"
+    AM_CFLAGS="-D_DEBUG"
+    AM_CXXFLAGS="-D_DEBUG"
 fi
 
 LT_INIT([disable-static])
