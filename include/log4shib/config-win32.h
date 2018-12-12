@@ -64,7 +64,7 @@ typedef u_long in_addr_t;
 
 /* Version number of package */
 #ifndef LOG4SHIB_VERSION
-#define LOG4SHIB_VERSION  "1.0.10"
+#define LOG4SHIB_VERSION  "2.0.0"
 #endif
 
 /* define if the compiler implements namespaces */
