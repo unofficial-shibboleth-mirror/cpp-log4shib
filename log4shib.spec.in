@@ -14,6 +14,10 @@ BuildRequires:  gcc-c++ pkgconfig
 BuildRequires: redhat-rpm-config  
 %endif  
 
+%if 0%{?rhel} >= 8 || 0%{?centos_version} >= 800
+BuildRequires: gdb
+%endif
+
 %if "%{_vendor}" == "suse"
 %define pkgdocdir %{_docdir}/%{name}
 %else
@@ -66,18 +70,14 @@ config/install-sh -m 644 -c AUTHORS COPYING INSTALL NEWS README THANKS ChangeLog
 %clean
 [ "$RPM_BUILD_ROOT" != "/" ] && %{__rm} -rf $RPM_BUILD_ROOT
 
-%ifnos solaris2.8 solaris2.9 solaris2.10
 %post -n lib@PACKAGE_NAME@2 -p /sbin/ldconfig
-%endif
 
 %post -n lib@PACKAGE_NAME@-devel
 if test "x$RPM_INSTALL_PREFIX0" != "x" ; then
     %{__perl} -pi -e"s|^prefix=\"[^\"]*\"|prefix=\"$RPM_INSTALL_PREFIX0\"|" $RPM_INSTALL_PREFIX0/bin/@PACKAGE_NAME@-config
 fi
 
-%ifnos solaris2.8 solaris2.9 solaris2.10 
 %postun -n lib@PACKAGE_NAME@2 -p /sbin/ldconfig
-%endif
 
 %files -n lib@PACKAGE_NAME@2
 %defattr(-,root,root,755)
@@ -94,6 +94,10 @@ fi
 %doc %{pkgdocdir}
 
 %changelog
+* Fri Sep 27 2019 Scott Cantor <cantor.2@osu.edu> - 2.0.0-2
+- Remove old Solaris exclusions
+- Add CentOS 8 gdb dependency
+
 * Mon Jun 25 2018 Scott Cantor <cantor.2@osu.edu> - 2.0.0-1
 - Bump version
 - Switch to bzipped source
