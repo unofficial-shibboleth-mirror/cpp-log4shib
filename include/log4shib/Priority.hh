@@ -103,7 +103,7 @@ namespace log4shib {
 	 * correspond with a known Priority name or a number
 	 **/
         static Value getPriorityValue(const std::string& priorityName)
-	throw(std::invalid_argument);
+	noexcept(false);
     };
 }
 

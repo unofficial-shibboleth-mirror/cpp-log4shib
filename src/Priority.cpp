@@ -28,7 +28,7 @@ namespace log4shib {
     }
 
     Priority::Value Priority::getPriorityValue(const std::string& priorityName) 
-    throw(std::invalid_argument) {
+    noexcept(false) {
 	Priority::Value value = -1;
 
 	for (unsigned int i = 0; i < 10; i++) {

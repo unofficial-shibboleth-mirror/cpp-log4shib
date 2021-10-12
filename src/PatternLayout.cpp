@@ -280,7 +280,7 @@ namespace log4shib {
         _conversionPattern = "";
     }
 
-    void PatternLayout::setConversionPattern(const std::string& conversionPattern) throw(ConfigureFailure) {
+    void PatternLayout::setConversionPattern(const std::string& conversionPattern) noexcept(false) {
 #ifdef LOG4SHIB_HAVE_SSTREAM 
         std::istringstream conversionStream(conversionPattern);
 #else

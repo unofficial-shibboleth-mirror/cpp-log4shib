@@ -62,7 +62,7 @@ namespace log4shib {
     PropertyConfiguratorImpl::~PropertyConfiguratorImpl() {
     }
 
-    void PropertyConfiguratorImpl::doConfigure(const std::string& initFileName) throw (ConfigureFailure) {
+    void PropertyConfiguratorImpl::doConfigure(const std::string& initFileName) noexcept(false) {
         std::ifstream initFile(initFileName.c_str());
 
         if (!initFile) {
@@ -73,7 +73,7 @@ namespace log4shib {
     }
 
 
-    void PropertyConfiguratorImpl::doConfigure(std::istream& in) throw (ConfigureFailure) {
+    void PropertyConfiguratorImpl::doConfigure(std::istream& in) noexcept(false) {
         // parse the file to get all of the configuration
         _properties.load(in);
 
@@ -89,7 +89,7 @@ namespace log4shib {
         }
     }
 
-    void PropertyConfiguratorImpl::instantiateAllAppenders() throw(ConfigureFailure) {
+    void PropertyConfiguratorImpl::instantiateAllAppenders() noexcept(false) {
         std::string currentAppender;
 
         std::string prefix("appender");
@@ -131,7 +131,7 @@ namespace log4shib {
         }
     }
 
-    void PropertyConfiguratorImpl::configureCategory(const std::string& categoryName) throw (ConfigureFailure) {
+    void PropertyConfiguratorImpl::configureCategory(const std::string& categoryName) noexcept(false) {
         // start by reading the "rootCategory" key
         std::string tempCatName = 
             (categoryName == "rootCategory") ? categoryName : "category." + categoryName;

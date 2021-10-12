@@ -80,7 +80,7 @@ namespace log4shib {
            @exception ConfigureFailure if the pattern is invalid
          **/
         virtual void setConversionPattern(const std::string& conversionPattern)
-            throw(ConfigureFailure);
+            noexcept(false);
 
         virtual std::string getConversionPattern() const;
 

@@ -69,7 +69,7 @@ namespace log4shib {
     }
 
     void Category::setPriority(Priority::Value priority)
-    throw(std::invalid_argument) {
+    noexcept(false) {
         if ((priority < Priority::NOTSET) || (getParent() != NULL)) {
             _priority = priority;
         } else {
@@ -92,7 +92,7 @@ namespace log4shib {
     }
     
     void Category::addAppender(Appender* appender) 
-    throw(std::invalid_argument) {
+    noexcept(false) {
         if (appender) {
             threading::ScopedLock lock(_appenderSetMutex);
             {

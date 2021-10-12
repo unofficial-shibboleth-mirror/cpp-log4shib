@@ -11,7 +11,7 @@
 
 namespace log4shib {
 
-    void PropertyConfigurator::configure(const std::string& initFileName) throw (ConfigureFailure) {
+    void PropertyConfigurator::configure(const std::string& initFileName) noexcept(false) {
         PropertyConfiguratorImpl configurator;
         
         configurator.doConfigure(initFileName);
