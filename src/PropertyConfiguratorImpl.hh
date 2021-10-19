@@ -28,10 +28,8 @@ namespace log4shib {
 
         PropertyConfiguratorImpl();
         virtual ~PropertyConfiguratorImpl();
-        virtual void doConfigure(const std::string& initFileName)
-            noexcept(false);
-        virtual void doConfigure(std::istream& in)
-            noexcept(false);
+        virtual void doConfigure(const std::string& initFileName);
+        virtual void doConfigure(std::istream& in);
 
         protected:
         /**
@@ -42,7 +40,7 @@ namespace log4shib {
            The name 'rootCategory' refers to the root Category.
            throw ConfigureFailure
          **/
-        void configureCategory(const std::string& categoryname) noexcept(false);
+        void configureCategory(const std::string& categoryname);
 
         /**
          * Get a list of categories for which we should do the configuration.  This simply
@@ -51,7 +49,7 @@ namespace log4shib {
          */
         void getCategories(std::vector<std::string>& categories) const;
 
-        void instantiateAllAppenders() noexcept(false);
+        void instantiateAllAppenders();
 
         /**
          * Intantiate and configure the appender referred to by the given name. This method searches the

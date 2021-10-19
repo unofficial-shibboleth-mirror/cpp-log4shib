@@ -34,7 +34,7 @@ namespace log4shib {
          * @exception ConfigureFailure if the method encountered a read or 
          * syntax error.
          **/
-        static void configure(const std::string& initFileName) noexcept(false);
+        static void configure(const std::string& initFileName);
 
         /**
          * Configure log4shib with the configuration in the given file.
@@ -45,7 +45,8 @@ namespace log4shib {
          * @exception ConfigureFailure if the method encountered a read or 
          * syntax error.
          **/
-        static void configure(std::istream& initFile) noexcept(false);    };
+        static void configure(std::istream& initFile);
+    };
 }
 
 #endif

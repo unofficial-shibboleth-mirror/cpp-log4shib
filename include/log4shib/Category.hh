@@ -111,8 +111,7 @@ namespace log4shib {
          * @exception std::invalid_argument if the caller tries to set
          * Priority::NOTSET on the Root Category.
          **/
-        virtual void setPriority(Priority::Value priority) 
-        noexcept(false);
+        virtual void setPriority(Priority::Value priority);
 
         /**
          * Returns the assigned Priority, if any, for this Category.
@@ -145,8 +144,7 @@ namespace log4shib {
          * @param appender The Appender to wich this category has to log.
          * @exception std::invalid_argument if the appender is NULL.
          **/
-        virtual void addAppender(Appender* appender) 
-        noexcept(false);
+        virtual void addAppender(Appender* appender);
 
         /**
          * Adds an Appender for this Category.

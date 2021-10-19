@@ -42,7 +42,7 @@
 
 namespace log4shib {
 
-    void SimpleConfigurator::configure(const std::string& initFileName) noexcept(false) {
+    void SimpleConfigurator::configure(const std::string& initFileName) {
         std::ifstream initFile(initFileName.c_str());
         
         if (!initFile) {
@@ -52,7 +52,7 @@ namespace log4shib {
         configure(initFile);
     }
           
-    void SimpleConfigurator::configure(std::istream& initFile) noexcept(false) {
+    void SimpleConfigurator::configure(std::istream& initFile) {
         std::string nextCommand;
         std::string categoryName;
         

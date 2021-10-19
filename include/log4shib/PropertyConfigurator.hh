@@ -45,7 +45,7 @@ namespace log4shib {
     **/
     class LOG4SHIB_EXPORT PropertyConfigurator {
         public:
-        static void configure(const std::string& initFileName) noexcept(false);
+        static void configure(const std::string& initFileName);
     };
 }
 
